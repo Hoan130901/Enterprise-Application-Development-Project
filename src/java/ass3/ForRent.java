@@ -55,5 +55,5 @@ public class ForRent implements Serializable {
     public String toString() {
         return "ass3.ForRent[ id=" + id + " ]";
     }
-    
+
 }

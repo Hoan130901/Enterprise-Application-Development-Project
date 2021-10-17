@@ -62,15 +62,15 @@
                                      value="" required ="true" requiredMessage="This field cannot be blank"/> </td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel for="rentCost" value ="Rent Cost: "/></td> 
-                    <td><h:selectBooleanCheckbox></h:selectBooleanCheckbox></td>
+                    <td><h:outputLabel for="rentCost" value ="Furnished: "/></td> 
+                    <td><h:selectBooleanCheckbox value=""></h:selectBooleanCheckbox></td>
                 </tr>
             </table>
             <h:commandButton id="createSale" value="Create" 
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
-            <h:link outcome="listSaleProperties" style ="margin-left: 30px">List of sale properties</h:link><span> | </span><h:link outcome="index">Main Page</h:link>
+            <h:link outcome="listForRent" style ="margin-left: 30px">List of for rent properties</h:link><span> | </span><h:link outcome="index">Main Page</h:link>
         </h:form>
     </h:body>
 </html>
