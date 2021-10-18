@@ -12,57 +12,57 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="propType" value ="Property type : "/></td>
-                    <td><h:inputText id="propType" value="" required ="true" requiredMessage="Property Type cannot be blank"/></td>
+                    <td><h:inputText id="propType" value="#{forSaleController.forSaleProp.propertyType}" required ="true" requiredMessage="Property Type cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
-                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/></td>
+                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forSaleController.forSaleProp.numberOfBedrooms}" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBathroom" value ="No. of Bathrooms: "/></td>
-                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="" required ="true" requiredMessage="Number of Bathrooms cannot be blank" /></td>
+                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="#{forSaleController.forSaleProp.numberOfBathroom}" required ="true" requiredMessage="Number of Bathrooms cannot be blank" /></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="propDes" value ="Property Description : "/></td>
-                    <td><h:inputTextarea id="propDes" value="" required ="true" requiredMessage="Property Description cannot be blank" /> </td>
+                    <td><h:inputTextarea id="propDes" value="#{forSaleController.forSaleProp.description}" required ="true" requiredMessage="Property Description cannot be blank" /> </td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetNum" value ="Street Number: "/></td>
                     <td><h:inputText id="streetNum" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="Street Number cannot be blank"/> </td>
+                                     value="#{forSaleController.forSaleProp.streetNum}" required ="true" requiredMessage="Street Number cannot be blank"/> </td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetName" value ="Street Name: "/></td>
                     <td><h:inputText id="streetName" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="Street Name cannot be blank"/></td>
+                                     value="#{forSaleController.forSaleProp.streetName}" required ="true" requiredMessage="Street Name cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="city" value ="City: "/></td>
                     <td><h:inputText id="city" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="City cannot be blank"/></td>
+                                     value="#{forSaleController.forSaleProp.city}" required ="true" requiredMessage="City cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="State" value ="State: "/></td>
                     <td><h:inputText id="State" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="State cannot be blank"/></td>
+                                     value="#{forSaleController.forSaleProp.statte}" required ="true" requiredMessage="State cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="postCode" value ="Postcode: "/></td>
                     <td><h:inputText id="postCode" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="Postcode cannot be blank"/></td>
+                                     value="#{forSaleController.forSaleProp.postCode}" required ="true" requiredMessage="Postcode cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="country" value ="Country: "/></td>
                     <td><h:inputText id="country" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="Country cannot be blank"/></td>
+                                     value="#{forSaleController.forSaleProp.country}" required ="true" requiredMessage="Country cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="salePrice" value ="Sale Price: "/></td>
                     <td><h:inputText id="salePrice" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="Sale Price cannot be blank"/> </td>
+                                     value="#{forSaleController.forSaleProp.salePrice}" required ="true" requiredMessage="Sale Price cannot be blank"/> </td>
                 </tr>
             </table>
-            <h:commandButton id="createSale" value="Create" 
+            <h:commandButton id="createSale" value="Create"  action="#{forSaleController.doCreateSale}"
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>

@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="propType" value ="Property type : "/></td>
-                    <td><h:inputText id="propType" value="" required ="true" requiredMessage="Property Type cannot be blank"/></td>
+                    <td><h:inputText id="propType" value="#{forRentController.forRentProp.propertyType}" required ="true" requiredMessage="Property Type cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
@@ -66,7 +66,7 @@
                     <td><h:selectBooleanCheckbox value=""></h:selectBooleanCheckbox></td>
                 </tr>
             </table>
-            <h:commandButton id="createSale" value="Create" 
+            <h:commandButton id="createSale" value="Create"  action="#{forRentController.doCreateRent}"
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>

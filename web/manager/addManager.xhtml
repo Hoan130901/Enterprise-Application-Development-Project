@@ -12,7 +12,7 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="fName" value ="First Name : "/></td>
-                    <td><h:inputText id="fName" value="" required ="true" requiredMessage="Manager's First Name cannot be blank"/></td>
+                    <td><h:inputText id="fName" value="#{managerPropertyController.PManager.firstName}" required ="true" requiredMessage="Manager's First Name cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="lName" value ="Last Name : "/></td>
@@ -27,7 +27,7 @@
                     <td><h:inputTextarea id="email" value="" required ="true" requiredMessage="Manager's email cannot be blank" /> </td>
                 </tr>
             </table>
-            <h:commandButton id="createManager" value="Create" 
+            <h:commandButton id="createManager" value="Create" action="#{managerPropertyController.doCreatePManager}"
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
