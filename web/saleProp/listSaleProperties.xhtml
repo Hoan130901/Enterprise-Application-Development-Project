@@ -10,24 +10,24 @@
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current Sale Property</h1>
         <hr/><!-- comment -->
         <h:messages for="successMessage" globalOnly="true"/>
-        <h:dataTable value="" var="bk" border="1">
+        <h:dataTable value="#{forSaleController.forSalePropList}" var="bk" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="ID"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{bk.pid}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Type"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{bk.propertyType}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Location"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{bk.location}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
@@ -36,7 +36,7 @@
                 <h:link outcome="salePropertyDetails" value="View Details"/>
             </h:column>
         </h:dataTable>
-        <p>Total sale property <h:outputText value =""/></p>
+        <p>Total sale property: <h:outputText value ="#{forSaleController.saleListSize}"/></p>
         <hr/>
         <h:link outcome="addSaleProperty" style ="margin-left: 30px">Create a sale property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
     </h:body>

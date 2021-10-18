@@ -26,8 +26,8 @@ public class InRent extends Properties{
     }
 
 
-    public InRent(Float rentalPrice, String tenantName, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String statte, String country, Integer postCode, String propertyType) {
-        super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, statte, country, postCode, propertyType);
+    public InRent(Float rentalPrice, String tenantName, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
+        super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, state, country, postCode, propertyType);
         this.rentalPrice = rentalPrice;
         this.tenantName = tenantName;
     }

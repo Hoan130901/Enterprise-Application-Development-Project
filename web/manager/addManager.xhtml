@@ -16,15 +16,15 @@
                 </tr>
                 <tr>
                     <td><h:outputLabel for="lName" value ="Last Name : "/></td>
-                    <td><h:inputText id="lName" size="5" maxlength="5" value="" required ="true" requiredMessage="Manager's Last Name cannot be blank"/></td>
+                    <td><h:inputText id="lName" value="#{managerPropertyController.PManager.lastName}" required ="true" requiredMessage="Manager's Last Name cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="phone" value ="Phone(Mobile) : "/></td>
-                    <td><h:inputText id="phone" size="5" maxlength="5" value="" required ="true" requiredMessage="Manager's phone number cannot be blank" /></td>
+                    <td><h:inputText id="phone" value="#{managerPropertyController.PManager.phone}" required ="true" requiredMessage="Manager's phone number cannot be blank" /></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="email" value ="Email : "/></td>
-                    <td><h:inputTextarea id="email" value="" required ="true" requiredMessage="Manager's email cannot be blank" /> </td>
+                    <td><h:inputText id="email" value="#{managerPropertyController.PManager.email}" required ="true" requiredMessage="Manager's email cannot be blank" /> </td>
                 </tr>
             </table>
             <h:commandButton id="createManager" value="Create" action="#{managerPropertyController.doCreatePManager}"

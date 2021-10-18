@@ -26,7 +26,7 @@ public class ForSaleController {
     @EJB
     private ForSalePropertyEJB forSalePropEJB;
     private ForSale forsale = new ForSale();
-    private List<ForSale> saleList = new ArrayList<>();
+    private List<ForSale> saleList = new ArrayList<ForSale>();
     
 
     
@@ -59,10 +59,8 @@ public class ForSaleController {
     public void setForSalePropList(List<ForSale> saleList) {
         this.saleList = saleList;
     }
-     // Public Methods           
-
-
-    //Getters & Setters         
-
-
+    public Integer getSaleListSize(){
+        Integer listSize = saleList.size();
+        return listSize;
+    }
 }

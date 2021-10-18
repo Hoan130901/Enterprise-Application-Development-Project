@@ -18,6 +18,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getForSaleQuery", query = "select fs from ForSale fs")
+
 public class ForSale extends Properties {
 
     //Attributes
@@ -27,8 +28,8 @@ public class ForSale extends Properties {
     public ForSale() {
     }
 
-    public ForSale(Float salePrice, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String statte, String country, Integer postCode, String propertyType) {
-        super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, statte, country, postCode, propertyType);
+    public ForSale(Float salePrice, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
+        super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, state, country, postCode, propertyType);
         this.salePrice = salePrice;
     }
 

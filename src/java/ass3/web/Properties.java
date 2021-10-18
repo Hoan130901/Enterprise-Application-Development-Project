@@ -31,19 +31,19 @@ public class Properties implements Serializable {
     protected String streetNum;
     protected String streetName;
     protected String city;
-    protected String statte;
+    protected String state;
     protected String country;
     protected Integer postCode;
     protected String propertyType;
 
-    public Properties(Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String statte, String country, Integer postCode, String propertyType) {
+    public Properties(Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
         this.numberOfBedrooms = numberOfBedrooms;
         this.description = description;
         this.numberOfBathroom = numberOfBathroom;
         this.streetNum = streetNum;
         this.streetName = streetName;
         this.city = city;
-        this.statte = statte;
+        this.state = state;
         this.country = country;
         this.postCode = postCode;
         this.propertyType = propertyType;
@@ -55,6 +55,10 @@ public class Properties implements Serializable {
     }
     
     //Getters and Setters
+    public String getLocation(){
+        String location = getStreetNum()+" ,"+getStreetName();
+        return location;
+    }
     public Long getPid() {
         return pId;
     }
@@ -95,12 +99,12 @@ public class Properties implements Serializable {
         this.city = city;
     }
 
-    public String getStatte() {
-        return statte;
+    public String getState() {
+        return state;
     }
 
-    public void setStatte(String statte) {
-        this.statte = statte;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getCountry() {
@@ -126,8 +130,6 @@ public class Properties implements Serializable {
     public void setPropertyType(String propertyType) {
         this.propertyType = propertyType;
     }
-    
-
 
     public Integer getNumberOfBedrooms() {
         return numberOfBedrooms;
@@ -144,6 +146,5 @@ public class Properties implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
     
 }

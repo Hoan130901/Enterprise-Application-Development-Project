@@ -17,17 +17,24 @@ import javax.persistence.NamedQuery;
 public class ForRent extends Properties {
     //Attributes
     private Float rentalPrice;
+    private Boolean furnished;
 
     public ForRent() {
     }
 
-    public ForRent(Float rentalPrice, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String statte, String country, Integer postCode, String propertyType) {
-        super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, statte, country, postCode, propertyType);
+    public ForRent(Float rentalPrice, Boolean furnished, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
+        super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, state, country, postCode, propertyType);
         this.rentalPrice = rentalPrice;
+        this.furnished = furnished;
     }
     
-
-
+    //Getters and Setters
+    public Boolean getFurnished() {
+        return furnished;
+    }
+    public void setFurnished(Boolean furnished) {    
+        this.furnished = furnished;
+    }
 
     public Float getRentalPrice() {
         return rentalPrice;
