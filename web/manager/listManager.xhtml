@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>List of Property Manager</title>
+    </h:head>
+    <h:body>
+        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current Property Manager</h1>
+        <hr/><!-- comment -->
+        <h:messages for="successMessage" globalOnly="true"/>
+        <h:form>
+        <h:dataTable value="" var="bk" border="1">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="ID"/>
+                </f:facet>
+                <h:outputText value=""/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="First Name"/>
+                </f:facet>
+                <h:outputText value=""/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Last Name"/>
+                </f:facet>
+                <h:outputText value=""/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Action"/>
+                </f:facet>
+                <h:link outcome="managerDetails" value="View Details"/>
+            </h:column>
+        </h:dataTable>
+        <p>Total Managers: <h:outputText value =""/></p>
+        </h:form>
+        <hr/>
+        <h:link outcome="addManager" style ="margin-left: 30px">Create a property Manager</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+    </h:body>
+</html>
+

@@ -12,18 +12,18 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="propID" value ="Property ID : "/></td>
-                    <td><h:inputText id="propID" value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                    <td><h:inputText id="propID" value="" required ="true" requiredMessage="Property ID cannot be blank"/></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel for="tentName" value ="No. of Bedrooms: "/></td>
-                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                    <td><h:outputLabel for="tenName" value ="Tenant Name : "/></td>
+                    <td><h:inputText id="tenName" size="10" maxlength="10" value="" required ="true" requiredMessage="Tenant Name cannot be blank"/></td>
                 </tr>
             </table>
-            <h:commandButton id="createSale" value="Create" 
+            <h:commandButton id="createInRent" value="Create" 
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
-            <h:link outcome="listForRent" style ="margin-left: 30px">List of for rent properties</h:link><span> | </span><h:link outcome="index">Main Page</h:link>
+            <h:link outcome="listInRent" style ="margin-left: 30px">List of in rent properties</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
     </h:body>
 </html>

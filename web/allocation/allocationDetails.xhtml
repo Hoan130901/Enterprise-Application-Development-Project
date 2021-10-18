@@ -4,28 +4,32 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>List Sale Property</title>
+        <title>Allocation Details</title>
     </h:head>
     <h:body>
-        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current Sale Property</h1>
-        <hr/><!-- comment -->
-        <h:messages for="successMessage" globalOnly="true"/>
+        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Allocation of ID: <h:outputText value=""/></h1>
         <h:dataTable value="" var="bk" border="1">
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="ID"/>
+                    <h:outputText value="Allocation ID"/>
                 </f:facet>
                 <h:outputText value=""/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Type"/>
+                    <h:outputText value="Property Manager"/>
                 </f:facet>
                 <h:outputText value=""/>
             </h:column>
             <h:column>
                 <f:facet name="header">
-                    <h:outputText value="Location"/>
+                    <h:outputText value="Property Location"/>
+                </f:facet>
+                <h:outputText value=""/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="Time Created"/>
                 </f:facet>
                 <h:outputText value=""/>
             </h:column>
@@ -33,12 +37,11 @@
                 <f:facet name="header">
                     <h:outputText value="Action"/>
                 </f:facet>
-                <h:link outcome="salePropertyDetails" value="View Details"/>
+                <h:commandButton value ="Delete"></h:commandButton>
             </h:column>
         </h:dataTable>
-        <p>Total sale property <h:outputText value =""/></p>
         <hr/>
-        <h:link outcome="addSaleProperty" style ="margin-left: 30px">Create a sale property</h:link><span> | </span><h:link outcome="index">Main Page</h:link>
+        <h:link outcome="addAllocation" style ="margin-left: 30px">Create an Allocation</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
     </h:body>
 </html>
 

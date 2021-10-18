@@ -2,73 +2,76 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>New For Sale Property</title>
+        <title>New For Rent Property</title>
     </h:head>
     <h:body>
-        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for a Sale Property</h1>
-        <h:form id="addSaleForm"> <!-- create a form for user to enter information for a Sale Property -->
+        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for a Rent Property</h1>
+        <h:form id="addSaleForm"> <!-- create a form for user to enter information for a For Rent Property -->
             <table>
                 <tr>
                     <td><h:outputLabel for="propType" value ="Property type : "/></td>
-                    <td><h:inputText id="propType" value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                    <td><h:inputText id="propType" value="" required ="true" requiredMessage="Property Type cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
-                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBathroom" value ="No. of Bathrooms: "/></td>
-                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="" required ="true" requiredMessage="This field cannot be blank" /></td>
+                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="" required ="true" requiredMessage="Number of Bathrooms cannot be blank" /></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="propDes" value ="Property Description : "/></td>
-                    <td><h:inputTextarea id="propDes" value="" required ="true" requiredMessage="This field cannot be blank" /> </td>
+                    <td><h:inputTextarea id="propDes" value="" required ="true" requiredMessage="Property Description cannot be blank" /> </td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetNum" value ="Street Number: "/></td>
                     <td><h:inputText id="streetNum" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="This field cannot be blank"/> </td>
+                                     value="" required ="true" requiredMessage="Street number cannot be blank"/> </td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetName" value ="Street Name: "/></td>
                     <td><h:inputText id="streetName" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                                     value="" required ="true" requiredMessage="Street name cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="city" value ="City: "/></td>
                     <td><h:inputText id="city" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                                     value="" required ="true" requiredMessage="City cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="State" value ="State: "/></td>
                     <td><h:inputText id="State" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                                     value="" required ="true" requiredMessage="State cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="postCode" value ="Postcode: "/></td>
                     <td><h:inputText id="postCode" size="5" maxlength="5"
-                                     value="" /></td>
+                                     value="" required ="true" requiredMessage="Postcode cannot be blank" /></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="country" value ="Country: "/></td>
                     <td><h:inputText id="country" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="This field cannot be blank"/></td>
+                                     value="" required ="true" requiredMessage="Country cannot be blank"/></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel for="salePrice" value ="Sale Price: "/></td>
-                    <td><h:inputText id="salePrice" size="5" maxlength="5"
-                                     value="" required ="true" requiredMessage="This field cannot be blank"/> </td>
+                    <td><h:outputLabel for="rentCost" value ="Rent Cost: "/></td>
+                    <td><h:inputText id="rentCost" size="5" maxlength="5"
+                                     value="" required ="true" requiredMessage="Rent Cost cannot be blank"/> </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="rentCost" value ="Furnished: "/></td> 
+                    <td><h:selectBooleanCheckbox value=""></h:selectBooleanCheckbox></td>
                 </tr>
             </table>
             <h:commandButton id="createSale" value="Create" 
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
-            <h:link outcome="listSaleProperties" style ="margin-left: 30px">List of sale properties</h:link><span> | </span><h:link outcome="index">Main Page</h:link>
+            <h:link outcome="listForRent" style ="margin-left: 30px">List of for rent properties</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
-        
     </h:body>
 </html>
 
