@@ -6,33 +6,33 @@
         <title>Sale Property Details</title>
     </h:head>
     <h:body>
-        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Sale Property of ID: <h:outputText value=""/></h1>
+        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Sale Property of ID: <h:outputText value="#{forSaleController.forSaleProp.pid}"/></h1>
         <hr/>
         <h:form id="salePropDetails">
             <table>
                 <tr>
                     <td><h:outputLabel value ="Property type : "/></td>
-                    <td><h:outputLabel for="propType" value=""/></td>
+                    <td><h:outputLabel for="propType" value="#{forSaleController.forSaleProp.propertyType}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="No. of Bedrooms : "/></td>
-                    <td><h:outputLabel for="noBedrooms" value=""/></td>
+                    <td><h:outputLabel for="noBedrooms" value="#{forSaleController.forSaleProp.numberOfBedrooms}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="No. of Bathrooms : "/></td>
-                    <td><h:outputLabel for="noBathroom" value=""/></td>
+                    <td><h:outputLabel for="noBathroom" value="#{forSaleController.forSaleProp.numberOfBathroom}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Address : "/></td>
-                    <td><h:outputLabel for="address" value=""/></td>
+                    <td><h:outputLabel for="address" value="#{forSaleController.forSaleProp.location}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Sale Price : "/></td>
-                    <td><h:outputLabel for="salePrice" value=""/></td>
+                    <td><h:outputLabel for="salePrice" value="#{forSaleController.forSaleProp.salePrice}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Property Description : "/></td>
-                    <td><h:outputLabel for="propDes" value=""/></td>
+                    <td><h:outputLabel for="propDes" value="#{forSaleController.forSaleProp.description}"/></td>
                 </tr>
             </table>
         </h:form>

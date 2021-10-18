@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.NamedQuery;
 
 
 /**
@@ -19,7 +20,6 @@ import javax.persistence.InheritanceType;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-//@NamedQuery (name = "getPropertiesQuery", query = "select p from Properties p where p.address = :address")
 public class Properties implements Serializable {
     //Attributes
     @Id

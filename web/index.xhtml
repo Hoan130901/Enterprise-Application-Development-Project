@@ -10,9 +10,10 @@
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Real Estate Property E-Business System</h1>
         <hr/>
         <h2>Property Management</h2>
+        <h:form>
         <div class ="properties" style="margin-left: 30px;">
         <h:link outcome ="saleProp/addSaleProperty" style="margin-right: 20px;" value ="Create a new property"/>
-        <h:link outcome ="saleProp/listSaleProperties" style="margin-right: 20px;" value ="List all sale properties"/>
+        <h:commandLink id="listSale" action ="#{forSaleController.doListSale()}" style="margin-right: 20px;" value ="List all sale properties"/>
         <h:link outcome ="saleProp/searchSaleProperty" style="margin-right: 20px;" value ="Search a sale property"/>
         <br/>
         <h:link outcome ="forRent/addForRent" style="margin-right: 20px;" value ="Create a rental property"/>
@@ -39,6 +40,7 @@
         <br/>
         </div>
         <hr/>
+        </h:form>
     </h:body>
 </html>
 

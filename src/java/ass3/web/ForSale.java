@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getForSaleQuery", query = "select fs from ForSale fs")
-
+@NamedQuery (name = "searchForSaleQuery", query = "select p from ForSale p where p.pId = :pId")
 public class ForSale extends Properties {
 
     //Attributes

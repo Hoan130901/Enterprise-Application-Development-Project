@@ -6,11 +6,14 @@
 package ass3.ForSale;
 
 import ass3.web.ForSale;
+import static ass3.web.Properties_.pId;
 import java.util.*;
 import javax.inject.Named;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -21,27 +24,35 @@ import javax.faces.bean.ManagedBean;
 @RequestScoped
 public class ForSaleController {
 
-
     // Attributes             
     @EJB
     private ForSalePropertyEJB forSalePropEJB;
     private ForSale forsale = new ForSale();
     private List<ForSale> saleList = new ArrayList<ForSale>();
-    
 
-    
-    
     // Public Methods           
     public String doCreateSale() {
-        forsale = forSalePropEJB.createForSaleProp(forsale);
-        saleList = forSalePropEJB.findForSaleProp();
+        try {
+            forsale = forSalePropEJB.createForSaleProp(forsale);
+            saleList = forSalePropEJB.findForSaleProp();
+            FacesMessage message = new FacesMessage("Sale Property " + forsale.getLocation() + " has been created");
+            FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
+        } catch (Exception e) {
+            FacesMessage message = new FacesMessage("Add Sale Property Fail! Please try Again " + e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
+        }
         return "listSaleProperties.xhtml";
     }
+
     public String doListSale() {
         saleList = forSalePropEJB.findForSaleProp();
-        return "listSaleProperties.xhtml";
+        return "saleProp/listSaleProperties.xhtml";
     }
-    
+
+    public String doSearchSale() {
+        forsale = forSalePropEJB.searchForSale(forsale.getPid());
+        return "salePropertyDetails.xhtml";
+    }
 
     //Getters & Setters         
     public ForSale getForSaleProp() {
@@ -59,7 +70,8 @@ public class ForSaleController {
     public void setForSalePropList(List<ForSale> saleList) {
         this.saleList = saleList;
     }
-    public Integer getSaleListSize(){
+
+    public Integer getSaleListSize() {
         Integer listSize = saleList.size();
         return listSize;
     }

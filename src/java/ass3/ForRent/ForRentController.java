@@ -35,6 +35,7 @@ public class ForRentController {
         rentList = forRentPropEJB.findForRentProp();
         return "listForRent.xhtml";
     }
+    
     public String doListRent() {
         rentList = forRentPropEJB.findForRentProp();
         return "listForRent.xhtml";
