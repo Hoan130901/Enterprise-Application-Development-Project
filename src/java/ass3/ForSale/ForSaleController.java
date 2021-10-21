@@ -48,10 +48,28 @@ public class ForSaleController {
         saleList = forSalePropEJB.findForSaleProp();
         return "saleProp/listSaleProperties.xhtml";
     }
+    
+    public String doListSaleFromAddPage() {
+        saleList = forSalePropEJB.findForSaleProp();
+        return "listSaleProperties.xhtml";
+    }
 
     public String doSearchSale() {
         forsale = forSalePropEJB.searchForSale(forsale.getPid());
         return "salePropertyDetails.xhtml";
+    }
+   
+    public String returnDetails(){
+        return "salePropertyDetails.xhtml";
+    }
+    
+    public ForSale fsDetails(Long pId){    
+        System.out.println("1");
+        forsale = forSalePropEJB.searchForSale(pId);
+        System.out.println("1");
+        returnDetails();
+        System.out.println("1");
+        return forsale;
     }
 
     //Getters & Setters         
