@@ -21,7 +21,7 @@
         <h:link outcome ="forRent/searchForRent" style="margin-right: 20px;" value ="Search a rental property"/>
         <br/>
         <h:link outcome ="inRent/addInRent" style="margin-right: 20px;" value ="Create an in rent property"/>
-        <h:link outcome ="inRent/listInRent" style="margin-right: 20px;" value ="List all in rent properties"/>
+        <h:commandLink id="listInRent" action ="#{inRentController.doListInRentIndex()}" style="margin-right: 20px;" value ="List all in rent properties"/>
         <h:link outcome ="inRent/searchInRent" style="margin-right: 20px;" value ="Search an in rent property"/>
         <br/>
         </div>
@@ -35,7 +35,7 @@
         <h2>Allocation Management</h2>
         <div class ="allocation" style="margin-left: 30px;">
         <h:link outcome ="allocation/addAllocation" style="margin-right: 20px;" value ="Create an allocation"/>
-        <h:link outcome ="allocation/listAllocation" style="margin-right: 20px;" value ="List all allocation"/>
+        <h:commandLink id="listAllocation" action ="#{allocationController.doListAllocationIndex()}" style="margin-right: 20px;" value ="List all allocation"/>
         <h:link outcome ="allocation/searchAllocation" style="margin-right: 20px;" value ="Search an allocation"/>
         <br/>
         </div>

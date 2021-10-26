@@ -10,30 +10,30 @@
             <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current For Rent Property</h1>
             <hr/><!-- comment -->
             <h:messages for="successMessage" globalOnly="true"/>
-            <h:dataTable value="" var="bk" border="1">
+            <h:dataTable value="#{inRentController.inRentPropList}" var="ir" border="1">
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="ID"/>
                     </f:facet>
-                    <h:outputText value=""/>
+                    <h:outputText value="#{ir.pid}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Type"/>
                     </f:facet>
-                    <h:outputText value=""/>
+                    <h:outputText value="#{ir.propertyType}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Location"/>
                     </f:facet>
-                    <h:outputText value=""/>
+                    <h:outputText value="#{ir.location}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Tenant"/>
                     </f:facet>
-                    <h:outputText value=""/>
+                    <h:outputText value="#{ir.tenantName}"/>
                 </h:column>
             </h:dataTable>
             <p>Total In Rent property <h:outputText value =""/></p>

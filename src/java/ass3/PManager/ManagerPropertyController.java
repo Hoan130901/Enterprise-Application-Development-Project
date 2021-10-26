@@ -76,4 +76,9 @@ public class ManagerPropertyController {
         this.pmanagerList = pmanagerList;
     }
     
+    public List<PManager> getPManagerListD() {
+        pmanagerList = managerEJB.findPManagerProp();
+        return pmanagerList;
+    }
+    
 }

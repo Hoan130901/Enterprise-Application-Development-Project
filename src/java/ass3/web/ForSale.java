@@ -5,11 +5,7 @@
  */
 package ass3.web;
 
-import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 /**
@@ -19,6 +15,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQuery(name = "getForSaleQuery", query = "select fs from ForSale fs")
 @NamedQuery (name = "searchForSaleQuery", query = "select p from ForSale p where p.pId = :pId")
+@NamedQuery(name = "getSaleStreetName", query = "select p from ForSale p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
+
 public class ForSale extends Properties {
 
     //Attributes

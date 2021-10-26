@@ -11,24 +11,24 @@
         <hr/><!-- comment -->
         <h:messages for="successMessage" globalOnly="true"/>
         <h:form>
-        <h:dataTable value="" var="bk" border="1">
+            <h:dataTable value="#{allocationController.allocationList}" var="a" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Allocation ID"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{a.id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Property Manager"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{a.manager.fullName}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Property Location"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{a.properties.location}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">

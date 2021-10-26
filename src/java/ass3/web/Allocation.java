@@ -23,6 +23,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getAllocationQuery", query = "select a from Allocation a")
+
 public class Allocation implements Serializable{
 
     @Id

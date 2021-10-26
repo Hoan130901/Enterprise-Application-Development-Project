@@ -23,19 +23,19 @@ import javax.faces.context.FacesContext;
  * @author ilove
  */
 @Named(value = "forSaleController")
-@ManagedBean
-@SessionScoped
+@ManagedBean()
+@RequestScoped
 public class ForSaleController implements Serializable {
 
     // Attributes             
     @EJB
     private ForSalePropertyEJB forSalePropEJB;
     private ForSale forsale = new ForSale();
-    private List<ForSale> saleList = new ArrayList<ForSale>();
+    private List<ForSale> saleList = new ArrayList<>();
 
     // Public Methods           
     public String doCreateSale() {
-        
+
         try {
             forsale = forSalePropEJB.createForSaleProp(forsale);
             saleList = forSalePropEJB.findForSaleProp();
@@ -50,7 +50,7 @@ public class ForSaleController implements Serializable {
     }
 
     public String doListSaleInDex() {
-        if(saleList.isEmpty()){
+        if (saleList.isEmpty()) {
             FacesMessage message = new FacesMessage("There is no For Sale property in the system");
             FacesContext.getCurrentInstance().addMessage("saleForm:emptyListMessage", message);
             return "saleProp/listSaleProperties.xhtml";
@@ -58,51 +58,49 @@ public class ForSaleController implements Serializable {
         saleList = forSalePropEJB.findForSaleProp();
         return "saleProp/listSaleProperties.xhtml";
     }
-    
+
     public String doListSale() {
         saleList = forSalePropEJB.findForSaleProp();
         return "listSaleProperties.xhtml";
     }
 
     public String doSearchSale() {
-        try{
-        forsale = forSalePropEJB.searchForSale(forsale.getPid());
-        }
-        catch(EJBException ee){
-        FacesMessage message = new FacesMessage("Sale Property not found! Please try again.");
-        FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
-        return "searchSaleProperty.xhtml";
+        try {
+            forsale = forSalePropEJB.searchForSale(forsale.getPid());
+        } catch (EJBException ee) {
+            FacesMessage message = new FacesMessage("Sale Property not found! Please try again.");
+            FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
+            return "searchSaleProperty.xhtml";
         }
         return "searchForSaleLanding.xhtml";
     }
+
     //methods for View Detais
-    public List<ForSale> searchFSDetails(){
-        saleList = forSalePropEJB.forSaleDetails(forsale.getPid()); 
+    public List<ForSale> searchFSDetails() {
+        saleList = forSalePropEJB.forSaleDetails(forsale.getPid());
         return saleList;
     }
-    
-    public ForSale viewDetails(Long pid){
+
+    public ForSale viewDetails(Long pid) {
         return forsale = forSalePropEJB.searchForSale(pid);
-    } 
-    public String fsDetails(Long pId){ 
-        System.out.print(pId);  
+    }
+
+    public String fsDetails(Long pId) {
+        System.out.print(pId);
         viewDetails(pId);
         return "/salePropertyDetails.xhtml";
     }
 
     //Getters & Setters         
     public ForSale getForSaleProp() {
-        System.out.println("1");
         return forsale;
     }
 
     public void setSaleProp(ForSale forsale) {
         this.forsale = forsale;
     }
-    
 
     public List<ForSale> getSaleList() {
-        System.out.println("2");
         return saleList;
     }
 
@@ -113,5 +111,10 @@ public class ForSaleController implements Serializable {
     public Integer getSaleListSize() {
         Integer listSize = saleList.size();
         return listSize;
+    }
+
+    public List<ForSale> getForSalePropList() {
+        saleList = forSalePropEJB.findForSaleProp();
+        return saleList;
     }
 }

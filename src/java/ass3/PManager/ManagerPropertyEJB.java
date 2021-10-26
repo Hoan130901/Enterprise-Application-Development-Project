@@ -33,4 +33,5 @@ public class ManagerPropertyEJB {
         em.persist(pmanager);
         return pmanager;
     }
+    
 }

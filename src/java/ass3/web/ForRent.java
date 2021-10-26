@@ -14,19 +14,25 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getForRentQuery", query = "select p from ForRent p")
+@NamedQuery(name = "getForRentByID", query = "select p from ForRent p where p.pId = :fpId")
+@NamedQuery(name = "deleteForRentID", query = "DELETE FROM ForRent p where p.pId = :dpId")
+@NamedQuery(name = "getStreetName", query = "select p from ForRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
+
 @NamedQuery (name = "searchForRentQuery", query = "select p from ForRent p where p.pId = :pId")
 public class ForRent extends Properties {
     //Attributes
     private Float rentalPrice;
     private Boolean furnished;
+    private String tenantName;
 
     public ForRent() {
     }
 
-    public ForRent(Float rentalPrice, Boolean furnished, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
+    public ForRent(Float rentalPrice, Boolean furnished, String tenantName, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
         super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, state, country, postCode, propertyType);
         this.rentalPrice = rentalPrice;
         this.furnished = furnished;
+        this.tenantName = tenantName;
     }
     
     //Getters and Setters
@@ -44,5 +50,12 @@ public class ForRent extends Properties {
     public void setRentalPrice(Float rentalPrice) {
         this.rentalPrice = rentalPrice;
     }    
-       
+    
+     public String getTenantName() {
+        return tenantName;
+    }
+
+    public void setTenantName(String tenantName) {
+        this.tenantName = tenantName;
+    }
 }

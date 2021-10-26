@@ -12,14 +12,14 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="propID" value ="Property ID : "/></td>
-                    <td><h:inputText id="propID" value="" required ="true" requiredMessage="Property ID cannot be blank"/></td>
+                    <td><h:inputText id="propID" value="#{inRentController.inRentProp.pid}" required ="true" requiredMessage="Property ID cannot be blank"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="tenName" value ="Tenant Name : "/></td>
-                    <td><h:inputText id="tenName" size="10" maxlength="10" value="" required ="true" requiredMessage="Tenant Name cannot be blank"/></td>
+                    <td><h:inputText id="tenName" size="10" maxlength="10" value="#{inRentController.inRentProp.tenantName}" required ="true" requiredMessage="Tenant Name cannot be blank"/></td>
                 </tr>
             </table>
-            <h:commandButton id="createInRent" value="Create" 
+            <h:commandButton id="createInRent" value="Create" action="#{inRentController.doCreateInRent}" 
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
