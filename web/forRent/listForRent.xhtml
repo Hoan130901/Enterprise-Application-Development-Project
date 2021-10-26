@@ -34,8 +34,8 @@
                 <f:facet name="header">
                     <h:outputText value="Action"/>
                 </f:facet>
-                <h:link outcome="forRentDetails" value="View Details"/>
-            </h:column>
+                <h:commandButton  id="searchSale" value="View Details" action="#{forRentController.getForRentID(fr.pid)}" />
+            </h:column>`
         </h:dataTable>
         </h:form>
         <p>Total For Rent property <h:outputText value ="#{forRentController.forRentListSize}"/></p>

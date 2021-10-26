@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -31,5 +32,11 @@ public class ForRentPropertyEJB {
     public ForRent createForRentProp(ForRent forrent) {
         em.persist(forrent);
         return forrent;
+    }
+        public ForRent findForRentWithID(Long ID, ForRent forrent) {
+                Query query = em.createNamedQuery("getForRentByID",ForRent.class);
+                query.setParameter("fpId", ID);
+                forrent = (ForRent)query.getSingleResult();
+          return forrent;
     }
 }

@@ -5,7 +5,6 @@
  */
 package ass3.web;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
@@ -14,7 +13,7 @@ import javax.persistence.NamedQuery;
  * @author ilove
  */
 @Entity
-@NamedQuery(name = "getInRentQuery", query = "select ir from InRent ir")
+@NamedQuery(name = "getInRentQuery", query = "select p from InRent p")
 @NamedQuery(name = "getInRentStreetName", query = "select p from InRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
 
 public class InRent extends Properties{
