@@ -2,46 +2,48 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
     <h:head>
         <title>List Sale Property</title>
     </h:head>
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current Sale Property</h1>
-        <hr/><!-- comment -->   
-        <h:messages for="successMessage" globalOnly="true"/>
+        <hr/><!-- comment --> 
+        
         <h:form id="saleForm">
-        <h:dataTable value="#{forSaleController.forSalePropList}" var="bk" border="1">
+            <h:inputHidden id="successMessage" />
+            <h:message style="color:darkblue; font-size: 25px " for="successMessage" />
+            <h:dataTable value="#{forSaleController.saleList()}" var="fs" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="ID"/>
-                </f:facet>         
-                <h:outputText value="#{bk.pid}" id="pId" />
+                </f:facet>
+                <h:outputText value="#{fs.pid}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Type"/>
                 </f:facet>
-                <h:outputText value="#{bk.propertyType}"/>
+                <h:outputText value="#{fs.propertyType}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Location"/>
                 </f:facet>
-                <h:outputText value="#{bk.location}"/>
+                <h:outputText value="#{fs.location}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Action"/>
                 </f:facet>
-                <h:commandButton action="#{forSaleController.fsDetails(pId)}" value="View Details"/>
+                <h:commandLink action ="#{forSaleController.fsDetails(fs.pid)}" value="View Details"></h:commandLink>
             </h:column>
         </h:dataTable>
-            </h:form>
+        </h:form>
         <p>Total sale property: <h:outputText value ="#{forSaleController.saleListSize}"/></p>
         <hr/>
-        
         <h:link outcome="addSaleProperty" style ="margin-left: 30px">Create a sale property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
     </h:body>
 </html>
-`

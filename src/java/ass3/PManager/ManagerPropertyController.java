@@ -11,7 +11,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -33,8 +35,16 @@ public class ManagerPropertyController {
     
     // Public Methods           
     public String doCreatePManager() {
+        try{
         pmanager = managerEJB.createPManagerProp(pmanager);
         pmanagerList = managerEJB.findPManagerProp();
+        FacesMessage message = new FacesMessage("Property Manager: " + pmanager.getFirstName()+" " +pmanager.getLastName() + " has been created");
+        FacesContext.getCurrentInstance().addMessage("managerForm:successMessage", message);
+        }
+        catch (Exception e) {
+            FacesMessage message = new FacesMessage("Add Property Manager Fail! Please try Again " + e.getMessage());
+            FacesContext.getCurrentInstance().addMessage("managerForm:successMessage", message);
+        }
         return "listManager.xhtml";
     }
     public String doListPManager() {
@@ -42,8 +52,14 @@ public class ManagerPropertyController {
         return "listManager.xhtml";
     }
     
-
-    //Getters & Setters         
+    public String doListPManagerIndex() {
+        pmanagerList = managerEJB.findPManagerProp();
+        return "manager/listManager.xhtml";
+    }
+    //Getters & Setters      
+    public int getListSize(){
+        return pmanagerList.size();
+    }
     public PManager getPManager() {
         return pmanager;
     }
@@ -59,9 +75,5 @@ public class ManagerPropertyController {
     public void setPManagerList(List<PManager> pmanagerList) {
         this.pmanagerList = pmanagerList;
     }
-     // Public Methods           
-
-
-    //Getters & Setters 
     
 }

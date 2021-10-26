@@ -6,9 +6,11 @@
 package ass3.ForSale;
 
 import ass3.web.ForSale;
-import static ass3.web.Properties_.pId;
-import java.util.*;
 import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -17,12 +19,12 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author andre
+ * @author ilove
  */
 @Named(value = "forSaleController")
-@ManagedBean()
-@RequestScoped
-public class ForSaleController {
+@ManagedBean
+@SessionScoped
+public class ForSaleController implements Serializable {
 
     // Attributes             
     @EJB
@@ -32,6 +34,7 @@ public class ForSaleController {
 
     // Public Methods           
     public String doCreateSale() {
+        
         try {
             forsale = forSalePropEJB.createForSaleProp(forsale);
             saleList = forSalePropEJB.findForSaleProp();
@@ -44,48 +47,52 @@ public class ForSaleController {
         return "listSaleProperties.xhtml";
     }
 
-    public String doListSale() {
+    public String doListSaleInDex() {
         saleList = forSalePropEJB.findForSaleProp();
         return "saleProp/listSaleProperties.xhtml";
     }
     
-    public String doListSaleFromAddPage() {
+    public String doListSale() {
         saleList = forSalePropEJB.findForSaleProp();
         return "listSaleProperties.xhtml";
     }
 
     public String doSearchSale() {
         forsale = forSalePropEJB.searchForSale(forsale.getPid());
-        return "salePropertyDetails.xhtml";
+        return "searchForSaleLanding.xhtml";
     }
-   
-    public String returnDetails(){
-        return "salePropertyDetails.xhtml";
+    //methods for View Detais
+    public List<ForSale> searchFSDetails(){
+        saleList = forSalePropEJB.forSaleDetails(forsale.getPid()); 
+        return saleList;
     }
     
-    public ForSale fsDetails(Long pId){    
-        System.out.println("1");
-        forsale = forSalePropEJB.searchForSale(pId);
-        System.out.println("1");
-        returnDetails();
-        System.out.println("1");
-        return forsale;
+    public ForSale viewDetails(Long pid){
+        return forsale = forSalePropEJB.searchForSale(pid);
+    } 
+    public String fsDetails(Long pId){ 
+        System.out.print(pId);  
+        viewDetails(pId);
+        return "/salePropertyDetails.xhtml";
     }
 
     //Getters & Setters         
     public ForSale getForSaleProp() {
+        System.out.println("1");
         return forsale;
     }
 
-    public void setForSaleProp(ForSale forsale) {
+    public void setSaleProp(ForSale forsale) {
         this.forsale = forsale;
     }
+    
 
-    public List<ForSale> getForSalePropList() {
+    public List<ForSale> getSaleList() {
+        System.out.println("2");
         return saleList;
     }
 
-    public void setForSalePropList(List<ForSale> saleList) {
+    public void setSaleList(List<ForSale> saleList) {
         this.saleList = saleList;
     }
 

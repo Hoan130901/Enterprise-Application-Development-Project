@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-       xmlns:f="http://xmlns.jcp.org/jsf/core">
+       xmlns:f="http://xmlns.jcp.org/jsf/core" >
     <h:head>
         <title>Home-Real Estate Property E-Business System</title>
     </h:head>
@@ -13,11 +13,11 @@
         <h:form>
         <div class ="properties" style="margin-left: 30px;">
         <h:link outcome ="saleProp/addSaleProperty" style="margin-right: 20px;" value ="Create a new property"/>
-        <h:commandLink id="listSale" action ="#{forSaleController.doListSale()}" style="margin-right: 20px;" value ="List all sale properties"/>
+        <h:commandLink id="listSale" action ="#{forSaleController.doListSaleInDex()}" style="margin-right: 20px;" value ="List all sale properties"/>
         <h:link outcome ="saleProp/searchSaleProperty" style="margin-right: 20px;" value ="Search a sale property"/>
         <br/>
         <h:link outcome ="forRent/addForRent" style="margin-right: 20px;" value ="Create a rental property"/>
-        <h:link outcome ="forRent/listForRent" style="margin-right: 20px;" value ="List all rental propertie"/>
+        <h:commandLink id="listForRent" action ="#{forRentController.doListRentInDex()}" style="margin-right: 20px;" value ="List all rental properties"/>
         <h:link outcome ="forRent/searchForRent" style="margin-right: 20px;" value ="Search a rental property"/>
         <br/>
         <h:link outcome ="inRent/addInRent" style="margin-right: 20px;" value ="Create an in rent property"/>
@@ -28,7 +28,7 @@
         <h2>Property Manager</h2>
         <div class ="manager" style="margin-left: 30px;">
         <h:link outcome ="manager/addManager" style="margin-right: 20px;" value ="Create a property manager"/>
-        <h:link outcome ="manager/listManager" style="margin-right: 20px;" value ="List all property manager"/>
+        <h:commandLink action ="#{managerPropertyController.doListPManagerIndex()}" style="margin-right: 20px;" value ="List all property manager" />
         <h:link outcome ="manager/searchManager" style="margin-right: 20px;" value ="Search for property manager"/>
         <br/>
         </div>

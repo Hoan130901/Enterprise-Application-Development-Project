@@ -39,6 +39,10 @@ public class ForSale extends Properties {
     public Float getSalePrice() {
         return salePrice;
     }
+    public String getSalePriceFormat(){
+        String fsPrice ="$"+getSalePrice();
+        return fsPrice;
+    }
 
     public void setSalePrice(Float salePrice) {
         this.salePrice = salePrice;

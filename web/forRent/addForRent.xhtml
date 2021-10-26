@@ -12,15 +12,18 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="propType" value ="Property type : "/></td>
-                    <td><h:inputText id="propType" value="#{forRentController.forRentProp.propertyType}" required ="true" requiredMessage="Property Type cannot be blank"/></td>
+                    <td><h:inputText id="propType" value="#{forRentController.forRentProp.propertyType}" required ="true" requiredMessage="Property Type cannot be blank"/>
+                    <span> </span><h:message for="propType" id="msgforType" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
-                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBedrooms}" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/></td>
+                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBedrooms}" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/>
+                    <span> </span><h:message for="noBedRoom" id="msgforBedRoom" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBathroom" value ="No. of Bathrooms: "/></td>
-                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBathroom}" required ="true" requiredMessage="Number of Bathrooms cannot be blank" /></td>
+                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBathroom}" required ="true" requiredMessage="Number of Bathrooms cannot be blank" />
+                    <span> </span><h:message for="noBathdroom" id="msgforBathroom" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="propDes" value ="Property Description : "/></td>
@@ -69,6 +72,8 @@
             <h:commandButton id="createForRent" value="Create"  action="#{forRentController.doCreateRent}"
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
+        </h:form>
+        <h:form>
             <hr/>
             <h:link outcome="listForRent" style ="margin-left: 30px">List of for rent properties</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>

@@ -10,25 +10,25 @@
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current Property Manager</h1>
         <hr/><!-- comment -->
         <h:messages for="successMessage" globalOnly="true"/>
-        <h:form>
-        <h:dataTable value="" var="bk" border="1">
+        <h:form id="managerForm">
+            <h:dataTable value="#{managerPropertyController.PManagerList}" var="pm" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="ID"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{pm.mid}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="First Name"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{pm.firstName}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Last Name"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{pm.lastName}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
@@ -37,7 +37,7 @@
                 <h:link outcome="managerDetails" value="View Details"/>
             </h:column>
         </h:dataTable>
-        <p>Total Managers: <h:outputText value =""/></p>
+            <p>Total Managers: <h:outputText value ="#{managerPropertyController.listSize}"/></p>
         </h:form>
         <hr/>
         <h:link outcome="addManager" style ="margin-left: 30px">Create a property Manager</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>

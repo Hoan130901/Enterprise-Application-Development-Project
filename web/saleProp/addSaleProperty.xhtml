@@ -8,67 +8,79 @@
     </h:head>
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for a Sale Property</h1>
+        <h:messages for="errorMessage" id="message" globalOnly="true"/>
         <h:form id="addSaleForm"> <!-- create a form for user to enter information for a Sale Property -->
             <table>
                 <tr>
                     <td><h:outputLabel for="propType" value ="Property type : "/></td>
-                    <td><h:inputText id="propType" value="#{forSaleController.forSaleProp.propertyType}" /></td>
+                    <td><h:inputText id="propType" value="#{forSaleController.forSaleProp.propertyType}" required ="true" requiredMessage="Property Type cannot be blank" />
+                        <span> </span><h:message for="propType" id="msgforType" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
-                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forSaleController.forSaleProp.numberOfBedrooms}" /></td>
+                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forSaleController.forSaleProp.numberOfBedrooms}" required ="true" requiredMessage="Property No.of Bedrooms cannot be blank" />
+                    <span> </span><h:message for="noBedRoom" id="msgforBedRoom" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBathroom" value ="No. of Bathrooms: "/></td>
-                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="#{forSaleController.forSaleProp.numberOfBathroom}" /></td>
+                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="#{forSaleController.forSaleProp.numberOfBathroom}" required ="true" requiredMessage="Property no.of Bathrooms cannot be blank" />
+                    <span> </span><h:message for="noBathdroom" id="msgforBathroom" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="propDes" value ="Property Description : "/></td>
-                    <td><h:inputTextarea id="propDes" value="#{forSaleController.forSaleProp.description}" /> </td>
+                    <td><h:inputTextarea id="propDes" value="#{forSaleController.forSaleProp.description}" required ="true" requiredMessage="Property Description cannot be blank" />
+                    <span> </span><h:message for="propDes" id="msgforpropDes" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetNum" value ="Street Number: "/></td>
                     <td><h:inputText id="streetNum" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.streetNum}" /> </td>
+                                     value="#{forSaleController.forSaleProp.streetNum}" required ="true" requiredMessage="Street Number cannot be blank" />
+                    <span> </span><h:message for="streetNum" id="msgforStreetNum" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetName" value ="Street Name: "/></td>
                     <td><h:inputText id="streetName" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.streetName}"/></td>
+                                     value="#{forSaleController.forSaleProp.streetName}" required ="true" requiredMessage="Street Name cannot be blank"/>
+                    <span> </span><h:message for="streetName" id="msgforStreetName" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="city" value ="City: "/></td>
                     <td><h:inputText id="city" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.city}"/></td>
+                                     value="#{forSaleController.forSaleProp.city}" required ="true" requiredMessage="City cannot be blank"/> 
+                    <span> </span><h:message for="city" id="msg" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="State" value ="State: "/></td>
                     <td><h:inputText id="State" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.state}"/></td>
+                                     value="#{forSaleController.forSaleProp.state}" required ="true" requiredMessage="State cannot be blank"/>
+                    <span> </span><h:message for="State" id="state" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="postCode" value ="Postcode: "/></td>
                     <td><h:inputText id="postCode" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.postCode}"/></td>
+                                     value="#{forSaleController.forSaleProp.postCode}" required ="true" requiredMessage="Post code cannot be blank"/>
+                    <span> </span><h:message for="postCode" id="pCode" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="country" value ="Country: "/></td>
                     <td><h:inputText id="country" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.country}"/></td>
+                                     value="#{forSaleController.forSaleProp.country}" required ="true" requiredMessage="Country cannot be blank"/>
+                    <span> </span><h:message for="country" id="msgforCountry" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="salePrice" value ="Sale Price: "/></td>
                     <td><h:inputText id="salePrice" size="5" maxlength="5"
-                                     value="#{forSaleController.forSaleProp.salePrice}"/> </td>
+                                     value="#{forSaleController.forSaleProp.salePrice}" required="true" requiredMessage="Sale Price cannot blank"/>
+                    <span> </span><h:message for="salePrice" id="msgForsalePrice" style="color: red"/></td>
                 </tr>
             </table>
             <h:commandButton id="createSale" value="Create"  action="#{forSaleController.doCreateSale}"
                             />
-            <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
-            <hr/>
-            <h:commandLink action="#{forSaleController.doListSaleFromAddPage()}" style ="margin-left: 30px" value ="List of sale properties"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
-        
+        <hr/>
+        <h:form>
+            <h:commandLink action="#{forSaleController.doListSale()}" style ="margin-left: 30px" value ="List of sale properties"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        </h:form>
     </h:body>
 </html>
 

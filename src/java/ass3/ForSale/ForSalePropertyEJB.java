@@ -34,4 +34,9 @@ public class ForSalePropertyEJB {
         query.setParameter("pId", pId);
         return query.getSingleResult();
     }
+    public List<ForSale> forSaleDetails(Long pId){
+        TypedQuery<ForSale> query = em.createNamedQuery("searchForSaleQuery",ForSale.class);
+        query.setParameter("pId", pId);
+        return query.getResultList();
+    }
 }
