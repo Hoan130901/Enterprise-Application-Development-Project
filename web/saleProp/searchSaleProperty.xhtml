@@ -8,7 +8,9 @@
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Search a sale Property</h1>
         <hr/>
-        <h:form>
+        <h:form id="searchForm">
+            <h:inputHidden id="failMessage"/>
+                <h:message style="color:red ; font-size: 25px " for="failMessage"/>
             <table>
                 <tr>
                     <td><h:outputLabel for="propID" value ="Property ID : "/></td>

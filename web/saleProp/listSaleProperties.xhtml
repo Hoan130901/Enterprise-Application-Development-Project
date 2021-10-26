@@ -14,7 +14,9 @@
         
         <h:form id="saleForm">
             <h:inputHidden id="successMessage" />
-            <h:message style="color:darkblue; font-size: 25px " for="successMessage" />
+            <h:message style="color:darkblue; font-size: 20px " for="successMessage" />
+            <h:inputHidden id="emptyListMessage" />
+            <h:message style="color:darkblue; font-size: 20px " for="emptyListMessage" />
             <h:dataTable value="#{forSaleController.saleList}" var="fs" border="1">
             <h:column>
                 <f:facet name="header">

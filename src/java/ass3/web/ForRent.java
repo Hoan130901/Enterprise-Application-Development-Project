@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getForRentQuery", query = "select p from ForRent p")
+@NamedQuery (name = "searchForRentQuery", query = "select p from ForRent p where p.pId = :pId")
 public class ForRent extends Properties {
     //Attributes
     private Float rentalPrice;

@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -40,14 +41,20 @@ public class ForSaleController implements Serializable {
             saleList = forSalePropEJB.findForSaleProp();
             FacesMessage message = new FacesMessage("Sale Property " + forsale.getLocation() + " has been created");
             FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
-        } catch (Exception e) {
-            FacesMessage message = new FacesMessage("Add Sale Property Fail! Please try Again " + e.getMessage());
+        } catch (EJBException e) {
+            FacesMessage message = new FacesMessage("Add Sale Property Fail! Please try Again ");
             FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
+            return "addSaleProperty.xhtml";
         }
         return "listSaleProperties.xhtml";
     }
 
     public String doListSaleInDex() {
+        if(saleList.isEmpty()){
+            FacesMessage message = new FacesMessage("There is no For Sale property in the system");
+            FacesContext.getCurrentInstance().addMessage("saleForm:emptyListMessage", message);
+            return "saleProp/listSaleProperties.xhtml";
+        }
         saleList = forSalePropEJB.findForSaleProp();
         return "saleProp/listSaleProperties.xhtml";
     }
@@ -58,7 +65,14 @@ public class ForSaleController implements Serializable {
     }
 
     public String doSearchSale() {
+        try{
         forsale = forSalePropEJB.searchForSale(forsale.getPid());
+        }
+        catch(EJBException ee){
+        FacesMessage message = new FacesMessage("Sale Property not found! Please try again.");
+        FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
+        return "searchSaleProperty.xhtml";
+        }
         return "searchForSaleLanding.xhtml";
     }
     //methods for View Detais

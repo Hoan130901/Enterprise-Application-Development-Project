@@ -6,6 +6,7 @@
 package ass3.ForRent;
 
 import ass3.web.ForRent;
+import ass3.web.ForSale;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -28,6 +29,12 @@ public class ForRentPropertyEJB {
         return query.getResultList();
     }
 
+     public ForSale searchForSale(Long pId){
+        TypedQuery<ForSale> query = em.createNamedQuery("searchForSaleQuery",ForSale.class);
+        query.setParameter("pId", pId);
+        return query.getSingleResult();
+    }
+     
     public ForRent createForRentProp(ForRent forrent) {
         em.persist(forrent);
         return forrent;

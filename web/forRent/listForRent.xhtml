@@ -10,7 +10,8 @@
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current For Rent Property</h1>
         <hr/><!-- comment -->
         <h:form id="forRentForm">
-        <h:messages for="successMessage" globalOnly="true"/>
+            <h:inputHidden id ="successMessage"/>
+            <h:message for="successMessage" style="color:darkblue; font-size: 25px" />
         <h:dataTable value="#{forRentController.forRentPropList}" var="fr" border="1">
             <h:column>
                 <f:facet name="header">
