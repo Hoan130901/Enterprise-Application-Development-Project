@@ -5,6 +5,7 @@
  */
 package ass3.web;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
@@ -14,23 +15,36 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getInRentQuery", query = "select ir from InRent ir")
+@NamedQuery(name = "getInRentStreetName", query = "select p from InRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
+
 public class InRent extends Properties{
 
     //Attributes
     private Float rentalPrice;
     private String tenantName;
+    private Boolean furnished;
+
     
     //Constructure
 
     public InRent() {
     }
 
-
-    public InRent(Float rentalPrice, String tenantName, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
+    public InRent(Float rentalPrice, String tenantName, Boolean furnished, Integer rentalID, Integer numberOfBedrooms, String description, Integer numberOfBathroom, String streetNum, String streetName, String city, String state, String country, Integer postCode, String propertyType) {
         super(numberOfBedrooms, description, numberOfBathroom, streetNum, streetName, city, state, country, postCode, propertyType);
         this.rentalPrice = rentalPrice;
         this.tenantName = tenantName;
+        this.furnished = furnished;
     }
+
+    public Boolean getFurnished() {
+        return furnished;
+    }
+
+    public void setFurnished(Boolean furnished) {
+        this.furnished = furnished;
+    }
+
 
 
     //getter and setter

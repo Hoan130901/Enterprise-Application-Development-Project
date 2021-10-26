@@ -33,7 +33,7 @@ public class InRentController {
     
     // Public Methods           
     public String doCreateInRent() {
-        inrent = inRentPropEJB.createInRentProp(inrent);
+        inrent = inRentPropEJB.createInrent(inrent.getPid(),inrent);
         inrentList = inRentPropEJB.findInRentProp();
         return "listInRent.xhtml";
     }
@@ -51,8 +51,11 @@ public class InRentController {
     public void setInRentProp(InRent inrent) {
         this.inrent = inrent;
     }
+    
+
 
     public List<InRent> getInRentPropList() {
+        inrentList = inRentPropEJB.findInRentProp();
         return inrentList;
     }
 

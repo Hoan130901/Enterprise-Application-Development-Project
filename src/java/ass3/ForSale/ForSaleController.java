@@ -22,15 +22,15 @@ import javax.faces.context.FacesContext;
  * @author ilove
  */
 @Named(value = "forSaleController")
-@ManagedBean
-@SessionScoped
+@ManagedBean()
+@RequestScoped
 public class ForSaleController implements Serializable {
 
     // Attributes             
     @EJB
     private ForSalePropertyEJB forSalePropEJB;
     private ForSale forsale = new ForSale();
-    private List<ForSale> saleList = new ArrayList<ForSale>();
+    private List<ForSale> saleList = new ArrayList<>();
 
     // Public Methods           
     public String doCreateSale() {
@@ -99,5 +99,9 @@ public class ForSaleController implements Serializable {
     public Integer getSaleListSize() {
         Integer listSize = saleList.size();
         return listSize;
+    }
+        public List<ForSale> getForSalePropList() {
+         saleList = forSalePropEJB.findForSaleProp();
+        return saleList;
     }
 }

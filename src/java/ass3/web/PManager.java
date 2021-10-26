@@ -21,6 +21,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQuery(name = "getManagerQuery", query = "select m from PManager m")
+@NamedQuery(name = "getManagerFullName", query = "select m from PManager m WHERE CONCAT(m.firstName,' ',m.LastName) = :mFullName")
 
 public class PManager implements Serializable {
 

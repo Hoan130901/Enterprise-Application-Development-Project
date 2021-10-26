@@ -14,6 +14,10 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getForRentQuery", query = "select p from ForRent p")
+@NamedQuery(name = "getForRentByID", query = "select p from ForRent p where p.pId = :fpId")
+@NamedQuery(name = "deleteForRentID", query = "DELETE FROM ForRent p where p.pId = :dpId")
+@NamedQuery(name = "getStreetName", query = "select p from ForRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
+
 public class ForRent extends Properties {
     //Attributes
     private Float rentalPrice;
