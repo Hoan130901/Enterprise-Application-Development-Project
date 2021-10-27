@@ -6,6 +6,7 @@
 package ass3.web;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -15,6 +16,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -23,6 +26,9 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name = "getAllocationQuery", query = "select a from Allocation a")
+@NamedQuery(name = "deleteAllocationByID", query = "DELETE FROM Allocation p where p.id = :dpId ")
+@NamedQuery(name = "selectAllocationByID", query = "SELECT p FROM Allocation p where p.id = :SpId ")
+
 
 public class Allocation implements Serializable{
 
@@ -39,19 +45,29 @@ public class Allocation implements Serializable{
                 cascade = {CascadeType.PERSIST,CascadeType.REMOVE})
     @JoinColumn(name = "properties_id", referencedColumnName ="PID")
     private Properties properties;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date creationDate;
+    
     
     //constructor
     public Allocation() {
         
     }
 
-    public Allocation(Long id, PManager manager, Properties properties) {
-        this.id = id;
+    public Allocation(PManager manager, Properties properties, Date creationDate) {
         this.manager = manager;
         this.properties = properties;
+        this.creationDate = creationDate;
     }
-     
 
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -77,6 +93,8 @@ public class Allocation implements Serializable{
     public void setManager(PManager manager) {    
         this.manager = manager;
     }
+    
+    
 
 
 }

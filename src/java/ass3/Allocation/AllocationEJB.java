@@ -12,6 +12,8 @@ import ass3.web.InRent;
 import ass3.web.PManager;
 import ass3.web.Properties;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -46,12 +48,18 @@ public class AllocationEJB {
         query2.setParameter("fStreetName", rentalStreetName);
         PManager manager = (PManager)query1.getSingleResult();
         Properties prop = (Properties) query2.getSingleResult();
+
         allocation.setManager(manager);
         allocation.setProperties(prop);
+        allocation.setCreationDate(new Date());
         em.persist(allocation);
+        
+        
         TypedQuery<Allocation> query3 = em.createNamedQuery("getAllocationQuery",Allocation.class);
         ArrayList<Allocation> allocationList1 = new ArrayList<>();
         List<Allocation> allocationLists = query3.getResultList();
+        
+        
         for(int i=0;i<allocationLists.size();i++) {
             allocation = allocationLists.get(i);
             String fullname = allocation.getManager().getFirstName() + " " +allocation.getManager().getLastName();
@@ -71,8 +79,12 @@ public class AllocationEJB {
         query2.setParameter("fStreetName", InRentStreetName);
         PManager manager = (PManager)query1.getSingleResult();
         Properties prop = (Properties) query2.getSingleResult();
+        
+        
+        
         allocation.setManager(manager);
         allocation.setProperties(prop);
+        allocation.setCreationDate(new Date());
         em.persist(allocation);
         TypedQuery<Allocation> query3 = em.createNamedQuery("getAllocationQuery",Allocation.class);
         ArrayList<Allocation> allocationList1 = new ArrayList<>();
@@ -98,6 +110,7 @@ public class AllocationEJB {
         Properties prop = (Properties) query2.getSingleResult();
         allocation.setManager(manager);
         allocation.setProperties(prop);
+        allocation.setCreationDate(new Date());
         em.persist(allocation);
         TypedQuery<Allocation> query3 = em.createNamedQuery("getAllocationQuery",Allocation.class);
         ArrayList<Allocation> allocationList1 = new ArrayList<>();
@@ -112,6 +125,23 @@ public class AllocationEJB {
         allocationList1.add(allocation);
         manager.setAllocation(allocationList1);
         em.persist(allocation);
+        return allocation;
+    }
+        public Allocation DeleteAllocationWithID(Long ID, Allocation allocation) {
+            
+          Query query1 = em.createNamedQuery("selectAllocationByID", Allocation.class);
+          query1.setParameter("SpId", ID);
+          allocation = (Allocation)query1.getSingleResult();
+          TypedQuery<Allocation> query3 = em.createNamedQuery("getAllocationQuery",Allocation.class);
+          List<Allocation> allocationLists = query3.getResultList();
+          
+          
+          if(allocationLists.contains(allocation)) {
+              allocationLists.remove(allocation);
+          }
+         allocation.getManager().setAllocation(allocationLists);
+        Query query = em.createNamedQuery("deleteAllocationByID", Allocation.class);  
+        query.setParameter("dpId", ID).executeUpdate();
         return allocation;
     }
     

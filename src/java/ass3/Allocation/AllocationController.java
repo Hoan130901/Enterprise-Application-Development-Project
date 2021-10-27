@@ -103,5 +103,9 @@ public class AllocationController {
 
     public void setAllocationList(List<Allocation> allocationList) {
         this.allocationList = allocationList;
-    }      
+    }
+        public String getAllocationID(Long ID) {
+        allocation = allocationEJB.DeleteAllocationWithID(ID, allocation);
+        return "listAllocation.xhtml";
+    }
 }
