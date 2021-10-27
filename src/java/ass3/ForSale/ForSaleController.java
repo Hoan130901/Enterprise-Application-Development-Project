@@ -61,7 +61,12 @@ public class ForSaleController implements Serializable {
     }
     //method to list all sale properties
     public String doListSale() {
-        saleList = forSalePropEJB.findForSaleProp();
+         saleList = forSalePropEJB.findForSaleProp();
+        if (saleList.isEmpty()) {//check if list is empty 
+            FacesMessage message = new FacesMessage("There is no For Sale property in the system");
+            FacesContext.getCurrentInstance().addMessage("saleForm:emptyListMessage", message);
+            return "listSaleProperties.xhtml";
+        }    
         return "listSaleProperties.xhtml";
     }
     //method for search sale function

@@ -15,12 +15,15 @@
                 <tr>
                     <td><h:outputLabel for="propID" value ="Property ID : "/></td>
                     <td><h:inputText id="pID" value="#{forSaleController.forSaleProp.pid}" required ="true" requiredMessage="Property ID cannot be blank"/></td>
+                    <td><h:message for="pId" id="msgforID" style="color: red"/></td>
                 </tr>
             </table>
             <h:commandButton id="searchSale" value="SEARCH" action ="#{forSaleController.doSearchSale()}"
                             />
             <hr/>
-            <h:link outcome="listSaleProperties" style ="margin-left: 30px">List of sale properties</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        </h:form>
+        <h:form>
+            <h:commandLink value="List all for sale property" action="#{forSaleController.doListSale()}" style ="margin-left: 30px"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
     </h:body>
 </html>

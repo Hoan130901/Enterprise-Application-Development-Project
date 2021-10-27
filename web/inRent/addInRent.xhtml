@@ -13,20 +13,20 @@
                 <tr>
                     <td><h:outputLabel for="propID" value ="Property ID : "/></td>
                     <td><h:inputText id="propID" value="#{inRentController.inRentProp.pid}" required ="true" requiredMessage="Property ID cannot be blank"/></td>
+                    <td><h:message for="propID" id="msgforID" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="tenName" value ="Tenant Name : "/></td>
                     <td><h:inputText id="tenName" size="10" maxlength="10" value="#{inRentController.inRentProp.tenantName}" required ="true" requiredMessage="Tenant Name cannot be blank"/></td>
+                    <td><h:message for="tenName" id="msgforTenName" style="color: red"/></td>
                 </tr>
             </table>
-            <h:commandButton id="createInRent" value="Create" action="#{inRentController.doCreateInRent()}" 
+            <h:commandButton id="createInRent" value="Create" action="#{inRentController.doCreateInRent}" 
                             />
-            <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
         </h:form>
-        <h:form>
-            <h:commandLink action="#{inRentController.doListInRent()}" value="List all in rent property" style ="margin-left: 30px"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+         <h:form>
+            <h:commandLink value="List all in rent property" action="#{inRentController.doListInRent()}" style ="margin-left: 30px"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
     </h:body>
 </html>
-

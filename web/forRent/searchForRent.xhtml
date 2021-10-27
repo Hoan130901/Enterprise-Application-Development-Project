@@ -15,6 +15,7 @@
                 <tr>
                     <td><h:outputLabel for="propID" value ="Property ID : "/></td>
                     <td><h:inputText id="propID" value="#{forRentController.forRentProp.pid}" required ="true" requiredMessage="Property ID cannot be blank"/></td>
+                    <td><h:message for="propID" id="msgforID" style="color: red"/></td>
                 </tr>
             </table>
             <h:commandButton id="searchForRent" value="SEARCH" action ="#{forRentController.doSearchForRent()}" 
