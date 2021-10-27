@@ -29,7 +29,8 @@ public class ForRentController {
     private ForRent forrent = new ForRent();
     private List<ForRent> rentList = new ArrayList<>();
 
-    // Public Methods           
+    // Public Methods   
+    //method to create for rent property 
     public String doCreateRent() {
         try {
             forrent = forRentPropEJB.createForRentProp(forrent);
@@ -45,12 +46,17 @@ public class ForRentController {
         }
         return "listForRent.xhtml";
     }
-
+    //method to list all for rent property  
     public String doListRent() {
         rentList = forRentPropEJB.findForRentProp();
+        if (rentList.isEmpty()) {//check if list empty, then display message 
+            FacesMessage message = new FacesMessage("There is no For Rent property in the system");
+            FacesContext.getCurrentInstance().addMessage("forRentForm:emptyListMessage", message);
+            return "forRent/listForRent.xhtml";
+        }
         return "listForRent.xhtml";
     }
-
+    //method to list all for rent property from index page
     public String doListRentInDex() {
         rentList = forRentPropEJB.findForRentProp();
         if (rentList.isEmpty()) {//check if list empty, then display message 
@@ -60,7 +66,7 @@ public class ForRentController {
         }
         return "forRent/listForRent.xhtml";
     }
-
+    //method to search for rent property
     public String doSearchForRent() {
         try {
             forrent = forRentPropEJB.searchForRent(forrent.getPid());
@@ -73,6 +79,7 @@ public class ForRentController {
         return "forRentDetails.xhtml";
     }
 
+    //method to view detail from dataTable
     public String getForRentID(Long ID) {
         forrent = forRentPropEJB.findForRentWithID(ID, forrent);
         return "forRentDetails.xhtml";

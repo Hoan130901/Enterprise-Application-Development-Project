@@ -25,26 +25,27 @@ public class ForRentPropertyEJB {
     @PersistenceContext(unitName = "Assignment3_EAPU")
     private EntityManager em;
 
-    //Public methods           
+    //Public methods         
+    //method for list all query to geta all for rent properties
     public List<ForRent> findForRentProp() {
         TypedQuery<ForRent> query = em.createNamedQuery("getForRentQuery", ForRent.class);
         return query.getResultList();
     }
-
+    //method for search query by pId
     public ForRent searchForRent(Long pId) {
         TypedQuery<ForRent> query = em.createNamedQuery("searchForRentQuery", ForRent.class);
         query.setParameter("pId", pId);
         return query.getSingleResult();
     }
-
+    //method to persist for rent property to the table 
     public ForRent createForRentProp(ForRent forrent) {
         em.persist(forrent);
         return forrent;
     }
-
-    public ForRent findForRentWithID(Long ID, ForRent forrent) {
-        Query query = em.createNamedQuery("getForRentByID", ForRent.class);
-        query.setParameter("fpId", ID);
+    //method for view details query within dataTable by pId
+    public ForRent findForRentWithID(Long pId, ForRent forrent) {
+        Query query = em.createNamedQuery("searchForRentQuery", ForRent.class);
+        query.setParameter("pId", pId);
         forrent = (ForRent) query.getSingleResult();
         return forrent;
     }

@@ -19,11 +19,13 @@
                     <td><h:inputText id="tenName" size="10" maxlength="10" value="#{inRentController.inRentProp.tenantName}" required ="true" requiredMessage="Tenant Name cannot be blank"/></td>
                 </tr>
             </table>
-            <h:commandButton id="createInRent" value="Create" action="#{inRentController.doCreateInRent}" 
+            <h:commandButton id="createInRent" value="Create" action="#{inRentController.doCreateInRent()}" 
                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
-            <h:link outcome="listInRent" style ="margin-left: 30px">List of in rent properties</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{inRentController.doListInRent()}" value="List all in rent property" style ="margin-left: 30px"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
     </h:body>
 </html>

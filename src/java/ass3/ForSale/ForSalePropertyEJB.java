@@ -22,23 +22,29 @@ public class ForSalePropertyEJB {
     private EntityManager em;
 
     //Public methods           
+    //method to list all for sale properties
     public List<ForSale> findForSaleProp() {
-        TypedQuery<ForSale> query = em.createNamedQuery("getForSaleQuery",ForSale.class);
+        TypedQuery<ForSale> query = em.createNamedQuery("getForSaleQuery", ForSale.class);
         return query.getResultList();
     }
 
+    //method to create for sale property 
     public ForSale createForSaleProp(ForSale forsale) {
         em.persist(forsale);
         return forsale;
     }
-    public ForSale searchForSale(Long pId){
-        TypedQuery<ForSale> query = em.createNamedQuery("searchForSaleQuery",ForSale.class);
+
+    //method to search for sale property
+    public ForSale searchForSale(Long pId) {
+        TypedQuery<ForSale> query = em.createNamedQuery("searchForSaleQuery", ForSale.class);
         query.setParameter("pId", pId);
         return query.getSingleResult();
     }
+
+    //method to view details of for sale property from dataTable
     public ForSale findForSaleWithID(Long ID, ForSale forSale) {
-        Query query = em.createNamedQuery("getForSaleByID", ForSale.class);
-        query.setParameter("fspId", ID);
+        Query query = em.createNamedQuery("searchForSaleQuery", ForSale.class);
+        query.setParameter("pId", ID);
         forSale = (ForSale) query.getSingleResult();
         return forSale;
     }

@@ -20,7 +20,9 @@
             <h:commandButton id="searchForRent" value="SEARCH" action ="#{forRentController.doSearchForRent()}" 
                             />
             <hr/>
-            <h:link outcome="listForRent" style ="margin-left: 30px">List of for rent properties</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        </h:form>
+        <h:form>
+            <h:commandLink value="List all for rent property" action="#{forRentController.doListRent()}" style ="margin-left: 30px"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
         </h:form>
     </h:body>
 </html>

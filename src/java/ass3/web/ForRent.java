@@ -13,18 +13,16 @@ import javax.persistence.NamedQuery;
  * @author ilove
  */
 @Entity
-@NamedQuery(name = "getForRentQuery", query = "select p from ForRent p")
-@NamedQuery(name = "getForRentByID", query = "select p from ForRent p where p.pId = :fpId")
-@NamedQuery(name = "deleteForRentID", query = "DELETE FROM ForRent p where p.pId = :dpId")
+@NamedQuery(name = "getForRentQuery", query = "select p from ForRent p")//query ti list all for rent property
+@NamedQuery(name = "deleteForRentID", query = "DELETE FROM ForRent p where p.pId = :dpId")//delete property in forRent table after property get moved to inRent table
 @NamedQuery(name = "getStreetName", query = "select p from ForRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
-
-@NamedQuery (name = "searchForRentQuery", query = "select p from ForRent p where p.pId = :pId")
+@NamedQuery (name = "searchForRentQuery", query = "select p from ForRent p where p.pId = :pId")//query for search and view details by pId
 public class ForRent extends Properties {
     //Attributes
     private Float rentalPrice;
     private Boolean furnished;
     private String tenantName;
-
+    //constructor
     public ForRent() {
     }
 
