@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
 @Entity
 @NamedQuery(name = "getManagerQuery", query = "select m from PManager m")//get all property manager
 @NamedQuery(name = "getManagerFullName", query = "select m from PManager m WHERE CONCAT(m.firstName,' ',m.LastName) = :mFullName")
-@NamedQuery (name = "searchManagerQuery", query = "select m from PManager m where m.firstName = :mfn and m.LastName = :mln")//search for property manager by name query
+@NamedQuery (name = "searchManagerQuery", query = "SELECT m from PManager m WHERE m.firstName = :mfn AND m.LastName = :mln")//search for property manager by name query
 @NamedQuery (name = "viewDetailsQuery", query = "select m from PManager m where m.mId=:mId")//view detail for property manager by id query
 public class PManager implements Serializable {
 

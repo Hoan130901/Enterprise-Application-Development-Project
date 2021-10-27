@@ -59,7 +59,7 @@ public class ManagerPropertyController {
         return "manager/listManager.xhtml";
     }
     //view details function
-    public String getManagerName(String mId) {
+    public String getManagerName(Long mId) {
         pmanager = managerEJB.findManagerWithName(mId, pmanager);
         return "managerDetails.xhtml";
     }

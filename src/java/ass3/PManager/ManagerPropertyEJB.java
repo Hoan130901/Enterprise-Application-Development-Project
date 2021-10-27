@@ -43,7 +43,7 @@ public class ManagerPropertyEJB {
         return query.getSingleResult();
     }
     //view details property manager
-    public PManager findManagerWithName(String mId, PManager pManager) {
+    public PManager findManagerWithName(Long mId, PManager pManager) {
         Query query = em.createNamedQuery("viewDetailsQuery", PManager.class);
         query.setParameter("mId", mId);
         pManager = (PManager) query.getSingleResult();
