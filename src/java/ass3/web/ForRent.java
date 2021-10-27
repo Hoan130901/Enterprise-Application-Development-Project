@@ -17,14 +17,12 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name = "getForRentByID", query = "select p from ForRent p where p.pId = :fpId")
 @NamedQuery(name = "deleteForRentID", query = "DELETE FROM ForRent p where p.pId = :dpId")
 @NamedQuery(name = "getStreetName", query = "select p from ForRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
-
 @NamedQuery (name = "searchForRentQuery", query = "select p from ForRent p where p.pId = :pId")
 public class ForRent extends Properties {
     //Attributes
     private Float rentalPrice;
     private Boolean furnished;
     private String tenantName;
-
     public ForRent() {
     }
 

@@ -7,46 +7,46 @@
     </h:head>
     <h:body>
         <h:body>
-        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Sale Property of ID: <h:outputText value=""/></h1>
+            <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Sale Property of ID: <h:outputText value="#{inRentController.inRentProp.pid}"/></h1>
         <hr/>
         <h:form id="inRentDetails">
             <table>
                 <tr>
                     <td><h:outputLabel value ="Property type : "/></td>
-                    <td><h:outputLabel for="propType" value=""/></td>
+                    <td><h:outputLabel for="propType" value="#{inRentController.inRentProp.propertyType}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="No. of Bedrooms : "/></td>
-                    <td><h:outputLabel for="noBedrooms" value=""/></td>
+                    <td><h:outputLabel for="noBedrooms" value="#{inRentController.inRentProp.numberOfBedrooms}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="No. of Bathrooms : "/></td>
-                    <td><h:outputLabel for="noBathroom" value=""/></td>
+                    <td><h:outputLabel for="noBathroom" value="#{inRentController.inRentProp.numberOfBathroom}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Address : "/></td>
-                    <td><h:outputLabel for="address" value=""/></td>
+                    <td><h:outputLabel for="address" value="#{inRentController.inRentProp.location}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Weekly Rent : "/></td>
-                    <td><h:outputLabel for="weekRent" value=""/></td>
+                    <td><h:outputLabel for="weekRent" value="$#{inRentController.inRentProp.rentalPrice}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Furnished : "/></td>
-                    <td><h:outputLabel for="furnished" value=""/></td>
+                    <td><h:outputLabel for="furnished" value="#{inRentController.inRentProp.furnished}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Property Description : "/></td>
-                    <td><h:outputLabel for="propDes" value=""/></td>
+                    <td><h:outputLabel for="propDes" value="#{inRentController.inRentProp.description}"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel value ="Tenant Name : "/></td>
-                    <td><h:outputLabel for="tenName" value=""/></td>
+                    <td><h:outputLabel for="tenName" value="#{inRentController.inRentProp.tenantName}"/></td>
                 </tr>
             </table>
         </h:form>
         <hr/>
-        <h:link outcome="addSaleProperty" style ="margin-left: 30px">Create a sale property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        <h:link outcome="addInRent" style ="margin-left: 30px">Create an In Rent property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
     </h:body>
     </h:body>
 </html>

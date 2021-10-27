@@ -13,19 +13,17 @@ import javax.persistence.NamedQuery;
  * @author ilove
  */
 @Entity
-@NamedQuery(name = "getInRentQuery", query = "select p from InRent p")
-@NamedQuery(name = "getInRentStreetName", query = "select p from InRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
-
-public class InRent extends Properties{
+@NamedQuery(name = "getInRentQuery", query = "select p from InRent p")//get all in rent property query
+@NamedQuery(name = "getInRentStreetName", query = "select p from InRent p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")//get in rent street name query to persist inrent property from for rent
+@NamedQuery(name = "searchInRentQuery", query = "select p from InRent p where p.pId = :pId")//search in rent property query
+public class InRent extends Properties {
 
     //Attributes
     private Float rentalPrice;
     private String tenantName;
     private Boolean furnished;
 
-    
     //Constructure
-
     public InRent() {
     }
 
@@ -36,6 +34,7 @@ public class InRent extends Properties{
         this.furnished = furnished;
     }
 
+    //getter and setter
     public Boolean getFurnished() {
         return furnished;
     }
@@ -43,8 +42,6 @@ public class InRent extends Properties{
     public void setFurnished(Boolean furnished) {
         this.furnished = furnished;
     }
-
-    //getter and setter
 
     public Float getRentalPrice() {
         return rentalPrice;
@@ -61,5 +58,5 @@ public class InRent extends Properties{
     public void setTenantName(String tenantName) {
         this.tenantName = tenantName;
     }
-    
+
 }

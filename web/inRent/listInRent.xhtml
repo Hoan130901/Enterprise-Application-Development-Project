@@ -7,9 +7,14 @@
         <title>List In Rent Propety</title>
     </h:head>
     <h:body>
-            <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current For Rent Property</h1>
-            <hr/><!-- comment -->
-            <h:messages for="successMessage" globalOnly="true"/>
+        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The current For Rent Property</h1>
+        <hr/><!-- comment -->
+        <h:messages for="successMessage" globalOnly="true"/>
+        <h:form id="inRentForm">
+            <h:inputHidden id ="successMessage"/>
+            <h:message for="successMessage" style="color:darkblue; font-size: 17px" />
+            <h:inputHidden id="emptyListMessage" />
+            <h:message style="color:darkblue; font-size: 17px " for="emptyListMessage" />
             <h:dataTable value="#{inRentController.inRentPropList}" var="ir" border="1">
                 <h:column>
                     <f:facet name="header">
@@ -35,10 +40,17 @@
                     </f:facet>
                     <h:outputText value="#{ir.tenantName}"/>
                 </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Action"/>
+                    </f:facet>
+                    <h:commandButton id="searchInRent" value="View Details" action="#{inRentController.getInRentID(ir.pid)}" />
+                </h:column>
             </h:dataTable>
-            <p>Total In Rent property <h:outputText value =""/></p>
-            <hr/>
-            <h:link outcome="addInRent" style ="margin-left: 30px">Create a in rent property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        </h:form>
+        <p>Total In Rent property: <h:outputText value ="#{inRentController.listSize}"/></p>
+        <hr/>
+        <h:link outcome="addInRent" style ="margin-left: 30px">Create a in rent property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
     </h:body>
 </html>
 
