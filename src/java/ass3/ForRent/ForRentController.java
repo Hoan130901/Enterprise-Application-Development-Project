@@ -9,6 +9,7 @@ import ass3.web.ForRent;
 import java.util.*;
 import javax.inject.Named;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -54,7 +55,14 @@ public class ForRentController {
     }
     
     public String doSearchForRent(){
-        forrent = forRentPropEJB.searchForRent(forrent.getPid());
+        try {
+            forrent = forRentPropEJB.searchForRent(forrent.getPid());
+        } catch (EJBException ee) { //cacth exception when id does not match in the database
+            FacesMessage message = new FacesMessage("Rental Property not found! Please try again.");
+            FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
+            return "searchForRent.xhtml";
+        }
+       
         return "forRentDetails.xhtml";
     }
     public String getForRentID(Long ID) {

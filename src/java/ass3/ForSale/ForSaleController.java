@@ -43,7 +43,7 @@ public class ForSaleController implements Serializable {
             FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
         } catch (EJBException e) {
             FacesMessage message = new FacesMessage("Add Sale Property Fail! Please try Again ");
-            FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
+            FacesContext.getCurrentInstance().addMessage("addSaleForm:errorMessage", message);
             return "addSaleProperty.xhtml";
         }
         return "listSaleProperties.xhtml";
