@@ -9,6 +9,7 @@ import ass3.web.PManager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -34,27 +35,45 @@ public class ManagerPropertyController {
     
     
     // Public Methods           
-    public String doCreatePManager() {
+    public String doCreatePManager() {//method to create Pmanager
         try{
         pmanager = managerEJB.createPManagerProp(pmanager);
         pmanagerList = managerEJB.findPManagerProp();
+        //display successful added message
         FacesMessage message = new FacesMessage("Property Manager: " + pmanager.getFirstName()+" " +pmanager.getLastName() + " has been created");
         FacesContext.getCurrentInstance().addMessage("managerForm:successMessage", message);
         }
-        catch (Exception e) {
+        catch (EJBException e) {//display fail message if catch exception
             FacesMessage message = new FacesMessage("Add Property Manager Fail! Please try Again " + e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("managerForm:successMessage", message);
+            FacesContext.getCurrentInstance().addMessage("managerForm:failMessage", message);
         }
         return "listManager.xhtml";
     }
-    public String doListPManager() {
+    public String doListPManager() {//method to list all manager
         pmanagerList = managerEJB.findPManagerProp();
         return "listManager.xhtml";
     }
     
-    public String doListPManagerIndex() {
+    public String doListPManagerIndex() {//method to list all manager from index
         pmanagerList = managerEJB.findPManagerProp();
         return "manager/listManager.xhtml";
+    }
+    //view details function
+    public String getManagerName(String mId) {
+        pmanager = managerEJB.findManagerWithName(mId, pmanager);
+        return "managerDetails.xhtml";
+    }
+    
+    //method to search for rent property
+    public String doSearchManager() {
+        try {
+            pmanager = managerEJB.searchPManager(pmanager.getFirstName(),pmanager.getLastName());
+        } catch (EJBException ee) { //cacth exception when id does not match in the database
+            FacesMessage message = new FacesMessage("Property Manager not found! Please try again.");
+            FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
+            return "searchManager.xhtml";
+        }
+        return "managerDetails.xhtml";
     }
     //Getters & Setters      
     public int getListSize(){
@@ -66,10 +85,6 @@ public class ManagerPropertyController {
 
     public void setPManager(PManager pmanager) {
         this.pmanager = pmanager;
-    }
-
-    public List<PManager> getPManagerList() {
-        return pmanagerList;
     }
 
     public void setPManagerList(List<PManager> pmanagerList) {

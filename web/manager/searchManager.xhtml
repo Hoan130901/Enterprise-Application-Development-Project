@@ -13,14 +13,14 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="fName" value ="Manager First Name : "/></td>
-                    <td><h:inputText id="lName" value="" required ="true" requiredMessage="Manager's First Name cannot be blank"/></td>
+                    <td><h:inputText id="fName" value="#{managerPropertyController.PManager.firstName}" required ="true" requiredMessage="Manager's First Name cannot be blank"/></td>
                 </tr>
                 <tr>
-                    <td><h:outputLabel for="fName" value ="Manager First Name : "/></td>
-                    <td><h:inputText id="lName" value="" required ="true" requiredMessage="Manager's Last Name cannot be blank"/></td>
+                    <td><h:outputLabel for="lName" value ="Manager Last Name : "/></td>
+                    <td><h:inputText id="lName" value="#{managerPropertyController.PManager.lastName}" required ="true" requiredMessage="Manager's Last Name cannot be blank"/></td>
                 </tr>
             </table>
-            <h:commandButton id="searchManager" value="SEARCH" 
+            <h:commandButton id="searchManager" value="SEARCH" action ="#{managerPropertyController.doSearchManager()}"
                              />
             <hr/>
             <h:link outcome="listManager" style ="margin-left: 30px">List property manager</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
