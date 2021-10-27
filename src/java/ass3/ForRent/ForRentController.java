@@ -6,7 +6,6 @@
 package ass3.ForRent;
 
 import ass3.web.ForRent;
-import ass3.web.ForSale;
 import java.util.*;
 import javax.inject.Named;
 import javax.ejb.EJB;
@@ -53,7 +52,16 @@ public class ForRentController {
         rentList = forRentPropEJB.findForRentProp();
         return "forRent/listForRent.xhtml";
     }
-
+    
+    public String doSearchForRent(){
+        forrent = forRentPropEJB.searchForRent(forrent.getPid());
+        return "forRentDetails.xhtml";
+    }
+    public String getForRentID(Long ID) {
+        forrent = forRentPropEJB.findForRentWithID(ID,forrent);
+        return "forRentDetails.xhtml";
+    }
+    
     //Getters & Setters 
     public int getForRentListSize() {
         return rentList.size();

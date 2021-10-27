@@ -55,7 +55,7 @@ public class Properties implements Serializable {
     
     //Getters and Setters
     public String getLocation(){
-        String location = getStreetNum()+" ,"+getStreetName();
+        String location = getStreetNum()+", "+getStreetName()+", "+getState()+ ", "+getCity()+ ", "+getCountry();
         return location;
     }
     public Long getPid() {

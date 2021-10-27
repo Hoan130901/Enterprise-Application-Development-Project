@@ -50,45 +50,35 @@ public class ForSaleController implements Serializable {
     }
 
     public String doListSaleInDex() {
+        saleList = forSalePropEJB.findForSaleProp();
         if (saleList.isEmpty()) {
             FacesMessage message = new FacesMessage("There is no For Sale property in the system");
             FacesContext.getCurrentInstance().addMessage("saleForm:emptyListMessage", message);
             return "saleProp/listSaleProperties.xhtml";
-        }
-        saleList = forSalePropEJB.findForSaleProp();
+        }    
         return "saleProp/listSaleProperties.xhtml";
     }
-
+    //method to list all sale properties
     public String doListSale() {
         saleList = forSalePropEJB.findForSaleProp();
         return "listSaleProperties.xhtml";
     }
-
+    //method for search function
     public String doSearchSale() {
         try {
             forsale = forSalePropEJB.searchForSale(forsale.getPid());
-        } catch (EJBException ee) {
+        } catch (EJBException ee) { //cacth exception when id does not match in the database
             FacesMessage message = new FacesMessage("Sale Property not found! Please try again.");
             FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
             return "searchSaleProperty.xhtml";
         }
-        return "searchForSaleLanding.xhtml";
+        return "salePropertyDetails.xhtml";
     }
 
     //methods for View Detais
-    public List<ForSale> searchFSDetails() {
-        saleList = forSalePropEJB.forSaleDetails(forsale.getPid());
-        return saleList;
-    }
-
-    public ForSale viewDetails(Long pid) {
-        return forsale = forSalePropEJB.searchForSale(pid);
-    }
-
-    public String fsDetails(Long pId) {
-        System.out.print(pId);
-        viewDetails(pId);
-        return "/salePropertyDetails.xhtml";
+    public String viewDetails(Long pId) {
+        forsale = forSalePropEJB.findForSaleWithID(pId,forsale);
+        return "salePropertyDetails.xhtml";
     }
 
     //Getters & Setters         
@@ -100,11 +90,7 @@ public class ForSaleController implements Serializable {
         this.forsale = forsale;
     }
 
-    public List<ForSale> getSaleList() {
-        return saleList;
-    }
-
-    public void setSaleList(List<ForSale> saleList) {
+    public void setForSalePropList(List<ForSale> saleList) {
         this.saleList = saleList;
     }
 

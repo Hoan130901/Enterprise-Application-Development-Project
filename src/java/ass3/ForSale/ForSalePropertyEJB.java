@@ -1,5 +1,6 @@
 package ass3.ForSale;
 
+import ass3.web.ForRent;
 import ass3.web.ForSale;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -7,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import javax.faces.context.FacesContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,9 +36,10 @@ public class ForSalePropertyEJB {
         query.setParameter("pId", pId);
         return query.getSingleResult();
     }
-    public List<ForSale> forSaleDetails(Long pId){
-        TypedQuery<ForSale> query = em.createNamedQuery("searchForSaleQuery",ForSale.class);
-        query.setParameter("pId", pId);
-        return query.getResultList();
+    public ForSale findForSaleWithID(Long ID, ForSale forSale) {
+        Query query = em.createNamedQuery("getForSaleByID", ForSale.class);
+        query.setParameter("fspId", ID);
+        forSale = (ForSale) query.getSingleResult();
+        return forSale;
     }
 }

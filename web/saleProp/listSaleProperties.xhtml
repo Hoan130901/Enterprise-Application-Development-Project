@@ -17,7 +17,7 @@
             <h:message style="color:darkblue; font-size: 20px " for="successMessage" />
             <h:inputHidden id="emptyListMessage" />
             <h:message style="color:darkblue; font-size: 20px " for="emptyListMessage" />
-            <h:dataTable value="#{forSaleController.saleList}" var="fs" border="1">
+            <h:dataTable value="#{forSaleController.forSalePropList}" var="fs" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="ID"/>
@@ -40,7 +40,7 @@
                 <f:facet name="header">
                     <h:outputText value="Action"/>
                 </f:facet>
-                <h:commandLink action ="#{forSaleController.fsDetails(fs.pid)}" value="View Details"></h:commandLink>
+                <h:commandButton id="forSaleDetails" action ="#{forSaleController.viewDetails(fs.pid)}" value="View Details"/>
             </h:column>
         </h:dataTable>
         </h:form>

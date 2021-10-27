@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -19,24 +20,32 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class ForRentPropertyEJB {
-        //Attributes             
+    //Attributes             
+
     @PersistenceContext(unitName = "Assignment3_EAPU")
     private EntityManager em;
 
     //Public methods           
     public List<ForRent> findForRentProp() {
-        TypedQuery<ForRent> query = em.createNamedQuery("getForRentQuery",ForRent.class);
+        TypedQuery<ForRent> query = em.createNamedQuery("getForRentQuery", ForRent.class);
         return query.getResultList();
     }
 
-     public ForSale searchForSale(Long pId){
-        TypedQuery<ForSale> query = em.createNamedQuery("searchForSaleQuery",ForSale.class);
+    public ForRent searchForRent(Long pId) {
+        TypedQuery<ForRent> query = em.createNamedQuery("searchForRentQuery", ForRent.class);
         query.setParameter("pId", pId);
         return query.getSingleResult();
     }
-     
+
     public ForRent createForRentProp(ForRent forrent) {
         em.persist(forrent);
+        return forrent;
+    }
+
+    public ForRent findForRentWithID(Long ID, ForRent forrent) {
+        Query query = em.createNamedQuery("getForRentByID", ForRent.class);
+        query.setParameter("fpId", ID);
+        forrent = (ForRent) query.getSingleResult();
         return forrent;
     }
 }

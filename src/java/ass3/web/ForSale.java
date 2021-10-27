@@ -16,7 +16,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name = "getForSaleQuery", query = "select fs from ForSale fs")
 @NamedQuery (name = "searchForSaleQuery", query = "select p from ForSale p where p.pId = :pId")
 @NamedQuery(name = "getSaleStreetName", query = "select p from ForSale p WHERE  CONCAT(p.streetNum,' ',p.streetName) = :fStreetName")
-
+@NamedQuery(name = "getForSaleByID", query = "select p from ForSale p where p.pId = :fspId")
 public class ForSale extends Properties {
 
     //Attributes

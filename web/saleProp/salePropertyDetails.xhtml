@@ -9,35 +9,36 @@
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Sale Property of ID: <h:outputText value="#{forSaleController.forSaleProp.pid}"/></h1>
         <hr/>
-        <h:form id="salePropDetails">
-            <h:dataTable value ="#{forSaleController.searchFSDetails()}" var="fs"></h:dataTable>
-            <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="ID"/>
-                    </f:facet>
-                <h:outputText value="#{fs.pid}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Type"/>
-                    </f:facet>
-                    <h:outputText value="#{fs.propertyType}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Location"/>
-                    </f:facet>
-                    <h:outputText value="#{fs.location}"/>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="City"/>
-                    </f:facet>
-                    <h:outputText value="#{fs.city}"/>
-                </h:column>
+        <h:form id="searchFsDetails">
+            <table>
+                <tr>
+                    <td><h:outputLabel value ="Property Type : "/></td>
+                    <td><h:outputLabel for="propType" value ="#{forSaleController.forSaleProp.propertyType}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value ="No. Of Bedrooms : "/></td>
+                    <td><h:outputLabel for="noBedrooms" value ="#{forSaleController.forSaleProp.numberOfBedrooms}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value ="No.of Bathrooms : "/></td>
+                    <td><h:outputLabel for="noBathrooms" value ="#{forSaleController.forSaleProp.numberOfBathroom}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value ="Address : "/></td>
+                    <td><h:outputLabel for="address" value ="#{forSaleController.forSaleProp.location}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value ="Sale Price : "/></td>
+                    <td><h:outputLabel for="salePrice" value ="#{forSaleController.forSaleProp.salePriceFormat}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value ="Property Description : "/></td>
+                    <td><h:outputLabel for="propDes" value ="#{forSaleController.forSaleProp.description}"/></td>
+                </tr>
+            </table>
+            <h:link outcome="addSaleProperty" style ="margin-left: 30px">Create a sale property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link><!-- comment -->
+            <hr/>
         </h:form>
-        <hr/>
-        <h:link outcome="addSaleProperty" style ="margin-left: 30px">Create a sale property</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
     </h:body>
 </html>
 

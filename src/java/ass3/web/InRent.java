@@ -5,7 +5,6 @@
  */
 package ass3.web;
 
-
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
 
