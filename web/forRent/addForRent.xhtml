@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-       xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>New For Rent Property</title>
     </h:head>
@@ -20,13 +20,13 @@
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
-                    <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBedrooms}" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/>
+                    <td><h:inputText id="noBedroom" value="#{forRentController.forRentProp.numberOfBedrooms}" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/>
                     </td>
                     <td><h:message for="noBedroom" id="msgforBedRoom" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBathroom" value ="No. of Bathrooms: "/></td>
-                    <td><h:inputText id="noBathdroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBathroom}" required ="true" requiredMessage="Number of Bathrooms cannot be blank" />
+                    <td><h:inputText id="noBathdroom"  value="#{forRentController.forRentProp.numberOfBathroom}" required ="true" requiredMessage="Number of Bathrooms cannot be blank" />
                     </td>
                     <td><h:message for="noBathdroom" id="msgforBathroom" style="color: red"/></td>
                 </tr>
@@ -38,57 +38,57 @@
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetNum" value ="Street Number: "/></td>
-                    <td><h:inputText id="streetNum" size="5" maxlength="5"
+                    <td><h:inputText id="streetNum"
                                      value="#{forRentController.forRentProp.streetNum}" required ="true" requiredMessage="Street number cannot be blank"/> 
                     </td>
                     <td><h:message for="streetNum" id="msgforStreetNum" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="streetName" value ="Street Name: "/></td>
-                    <td><h:inputText id="streetName" size="5" maxlength="5"
+                    <td><h:inputText id="streetName"
                                      value="#{forRentController.forRentProp.streetName}" required ="true" requiredMessage="Street name cannot be blank"/>
-                     </td>
+                    </td>
                     <td><h:message for="streetName" id="msgforStreetName" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="city" value ="City: "/></td>
-                    <td><h:inputText id="city" size="5" maxlength="5"
+                    <td><h:inputText id="city" 
                                      value="#{forRentController.forRentProp.city}" required ="true" requiredMessage="City cannot be blank"/>
                     </td>
                     <td><h:message for="city" id="msg" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="State" value ="State: "/></td>
-                    <td><h:inputText id="State" size="5" maxlength="5"
+                    <td><h:inputText id="State"
                                      value="#{forRentController.forRentProp.state}" required ="true" requiredMessage="State cannot be blank"/></td>
-                                     <td><span> </span><h:message for="State" id="state" style="color: red"/></td>
+                    <td><span> </span><h:message for="State" id="state" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="postCode" value ="Postcode: "/></td>
-                    <td><h:inputText id="postCode" size="5" maxlength="5"
+                    <td><h:inputText id="postCode" 
                                      value="#{forRentController.forRentProp.postCode}" required ="true" requiredMessage="Postcode cannot be blank" /></td>
-                                     <td><span> </span><h:message for="postCode" id="pCode" style="color: red"/></td>
+                    <td><span> </span><h:message for="postCode" id="pCode" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="country" value ="Country: "/></td>
-                    <td><h:inputText id="country" size="5" maxlength="5"
+                    <td><h:inputText id="country" 
                                      value="#{forRentController.forRentProp.country}" required ="true" requiredMessage="Country cannot be blank"/></td>
-                                     <td> <span> </span><h:message for="country" id="msgforCountry" style="color: red"/></td>
+                    <td> <span> </span><h:message for="country" id="msgforCountry" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="rentCost" value ="Rent Cost: "/></td>
-                    <td><h:inputText id="rentCost" size="5" maxlength="5"
+                    <td><h:inputText id="rentCost"
                                      value="#{forRentController.forRentProp.rentalPrice}" required ="true" requiredMessage="Rent Cost cannot be blank"/> </td>
-                                     <td><h:message for="rentCost" id="msgForRentPrice" style="color: red"/></td>
+                    <td><h:message for="rentCost" id="msgForRentPrice" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="furnished" value ="Furnished: "/></td> 
                     <td><h:selectBooleanCheckbox value="#{forRentController.forRentProp.furnished}"></h:selectBooleanCheckbox></td>
-                    
+
                 </tr>
             </table>
             <h:commandButton id="createForRent" value="Create"  action="#{forRentController.doCreateRent}"
-                            />
+                             />
             <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
         </h:form>
         <h:form>
