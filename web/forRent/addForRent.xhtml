@@ -8,7 +8,9 @@
     </h:head>
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for a Rent Property</h1>
-        <h:form id="addSaleForm"> <!-- create a form for user to enter information for a For Rent Property -->
+        <h:form id="addForRentForm"> <!-- create a form for user to enter information for a For Rent Property -->
+            <h:inputHidden id="errorMessage"/>
+            <h:message style="color:red ; font-size: 17px" for="errorMessage"/>
             <table>
                 <tr>
                     <td><h:outputLabel for="propType" value ="Property type : "/></td>
@@ -20,7 +22,7 @@
                     <td><h:outputLabel for="noBedroom" value ="No. of Bedrooms: "/></td>
                     <td><h:inputText id="noBedroom" size="5" maxlength="5" value="#{forRentController.forRentProp.numberOfBedrooms}" required ="true" requiredMessage="Number of Bedrooms cannot be blank"/>
                     </td>
-                    <td><h:message for="noBedRoom" id="msgforBedRoom" style="color: red"/></td>
+                    <td><h:message for="noBedroom" id="msgforBedRoom" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="noBathroom" value ="No. of Bathrooms: "/></td>
@@ -77,7 +79,7 @@
                     <td><h:outputLabel for="rentCost" value ="Rent Cost: "/></td>
                     <td><h:inputText id="rentCost" size="5" maxlength="5"
                                      value="#{forRentController.forRentProp.rentalPrice}" required ="true" requiredMessage="Rent Cost cannot be blank"/> </td>
-                                     <td><h:message for="rentalPrice" id="msgForRentPrice" style="color: red"/></td>
+                                     <td><h:message for="rentCost" id="msgForRentPrice" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="furnished" value ="Furnished: "/></td> 

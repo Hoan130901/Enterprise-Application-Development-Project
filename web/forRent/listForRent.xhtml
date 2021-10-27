@@ -12,6 +12,8 @@
         <h:form id="forRentForm">
             <h:inputHidden id ="successMessage"/>
             <h:message for="successMessage" style="color:darkblue; font-size: 25px" />
+            <h:inputHidden id="emptyListMessage" />
+            <h:message style="color:darkblue; font-size: 17px " for="emptyListMessage" />
             <h:dataTable value="#{forRentController.forRentPropList}" var="fr" border="1">
             <h:column>
                 <f:facet name="header">

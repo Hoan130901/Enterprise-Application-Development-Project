@@ -31,15 +31,17 @@ public class ForRentController {
 
     // Public Methods           
     public String doCreateRent() {
-        try{
-        forrent = forRentPropEJB.createForRentProp(forrent);
-        rentList = forRentPropEJB.findForRentProp();
-        FacesMessage message = new FacesMessage("Rental Property " + forrent.getLocation() + " has been created");
-        FacesContext.getCurrentInstance().addMessage("forRentForm:successMessage", message);
-        }
-        catch (Exception e) {
-            FacesMessage message = new FacesMessage("Add For Rent Property Fail! Please try Again " + e.getMessage());
+        try {
+            forrent = forRentPropEJB.createForRentProp(forrent);
+            rentList = forRentPropEJB.findForRentProp();
+            //display succesful added message
+            FacesMessage message = new FacesMessage("Rental Property " + forrent.getLocation() + " has been created");
             FacesContext.getCurrentInstance().addMessage("forRentForm:successMessage", message);
+        } catch (EJBException e) {
+            //display fail message if exception occur 
+            FacesMessage message = new FacesMessage("Add For Rent Property Fail! Please try Again ");
+            FacesContext.getCurrentInstance().addMessage("addForRentForm:errorMessage", message);
+            return "addForRent.xhtml";
         }
         return "listForRent.xhtml";
     }
@@ -51,10 +53,15 @@ public class ForRentController {
 
     public String doListRentInDex() {
         rentList = forRentPropEJB.findForRentProp();
+        if (rentList.isEmpty()) {//check if list empty, then display message 
+            FacesMessage message = new FacesMessage("There is no For Rent property in the system");
+            FacesContext.getCurrentInstance().addMessage("forRentForm:emptyListMessage", message);
+            return "forRent/listForRent.xhtml";
+        }
         return "forRent/listForRent.xhtml";
     }
-    
-    public String doSearchForRent(){
+
+    public String doSearchForRent() {
         try {
             forrent = forRentPropEJB.searchForRent(forrent.getPid());
         } catch (EJBException ee) { //cacth exception when id does not match in the database
@@ -62,14 +69,15 @@ public class ForRentController {
             FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
             return "searchForRent.xhtml";
         }
-       
+
         return "forRentDetails.xhtml";
     }
+
     public String getForRentID(Long ID) {
-        forrent = forRentPropEJB.findForRentWithID(ID,forrent);
+        forrent = forRentPropEJB.findForRentWithID(ID, forrent);
         return "forRentDetails.xhtml";
     }
-    
+
     //Getters & Setters 
     public int getForRentListSize() {
         return rentList.size();
@@ -91,7 +99,5 @@ public class ForRentController {
     public void setForRentPropList(List<ForRent> rentlist) {
         this.rentList = rentlist;
     }
-    
-
 
 }

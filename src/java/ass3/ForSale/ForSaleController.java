@@ -33,15 +33,16 @@ public class ForSaleController implements Serializable {
     private ForSale forsale = new ForSale();
     private List<ForSale> saleList = new ArrayList<>();
 
-    // Public Methods           
-    public String doCreateSale() {
-
+    // Public Methods    
+    public String doCreateSale() {//method to cretae for sale property
         try {
             forsale = forSalePropEJB.createForSaleProp(forsale);
             saleList = forSalePropEJB.findForSaleProp();
+            //display succesful added message
             FacesMessage message = new FacesMessage("Sale Property " + forsale.getLocation() + " has been created");
             FacesContext.getCurrentInstance().addMessage("saleForm:successMessage", message);
         } catch (EJBException e) {
+            //display fail message if catch exception
             FacesMessage message = new FacesMessage("Add Sale Property Fail! Please try Again ");
             FacesContext.getCurrentInstance().addMessage("addSaleForm:errorMessage", message);
             return "addSaleProperty.xhtml";
@@ -49,9 +50,9 @@ public class ForSaleController implements Serializable {
         return "listSaleProperties.xhtml";
     }
 
-    public String doListSaleInDex() {
+    public String doListSaleInDex() {//method to list all property
         saleList = forSalePropEJB.findForSaleProp();
-        if (saleList.isEmpty()) {
+        if (saleList.isEmpty()) {//check if list is empty 
             FacesMessage message = new FacesMessage("There is no For Sale property in the system");
             FacesContext.getCurrentInstance().addMessage("saleForm:emptyListMessage", message);
             return "saleProp/listSaleProperties.xhtml";
@@ -63,7 +64,7 @@ public class ForSaleController implements Serializable {
         saleList = forSalePropEJB.findForSaleProp();
         return "listSaleProperties.xhtml";
     }
-    //method for search function
+    //method for search sale function
     public String doSearchSale() {
         try {
             forsale = forSalePropEJB.searchForSale(forsale.getPid());
