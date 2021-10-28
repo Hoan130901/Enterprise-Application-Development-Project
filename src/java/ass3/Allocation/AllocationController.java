@@ -45,9 +45,21 @@ public class AllocationController {
         return "allocation/listAllocation.xhtml";
     }
 
+    public String getAllocationById() {//search allocation by ID
+        
+        try {
+            allocation = allocationEJB.findAllocationById(allocation.getId(), allocation);
+        } catch (EJBException ee) { //cacth exception when id does not match in the database
+            FacesMessage message = new FacesMessage("Allocation not found! Please try again.");
+            FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);
+            return "searchAllocation.xhtml";
+        }
+        return "allocationDetails.xhtml";
+    }
+
     public String doListAllocation() {//list all allocation
         allocationList = allocationEJB.findAllocation();
-         if (allocationList.isEmpty()) {//check if list empty, then display message 
+        if (allocationList.isEmpty()) {//check if list empty, then display message 
             FacesMessage message = new FacesMessage("No allocation has been set in the system");
             FacesContext.getCurrentInstance().addMessage("allocationForm:emptyListMessage", message);
             return "listAllocation.xhtml";
@@ -69,7 +81,7 @@ public class AllocationController {
     }
 
     public void doCreateSale() {//allocate for sale property to selected manager   
-        
+
         try {
             allocationEJB.addSaleProp(managerName, saleStreetName, allocation);
             //display succesful added message
@@ -93,7 +105,20 @@ public class AllocationController {
             FacesMessage message = new FacesMessage("Add Allocation Fail! Please try Again ");
             FacesContext.getCurrentInstance().addMessage("addAllocationForm:errorMessage", message);
         }
-        
+
+    }
+     public String DeleteAllocationByID(Long ID) {//delete allocation       
+        try {
+            allocation = allocationEJB.DeleteAllocationWithID(ID, allocation);
+            //display succesful deleted message
+            FacesMessage message = new FacesMessage("Alllocation for " + allocation.getManager().getFirstName() + "with property " + allocation.getProperties().getLocation() +" has been deleted");
+            FacesContext.getCurrentInstance().addMessage("allocationForm:deleteMessage", message);
+        } catch (EJBException e) {
+            //display fail message if exception occur 
+            FacesMessage message = new FacesMessage("Delete Allocation Fail! Please try Again ");
+            FacesContext.getCurrentInstance().addMessage("allocationForm:errorMessage", message);
+        }
+        return "listAllocation.xhtml";
     }
 
     //Getters & Setters         
@@ -146,11 +171,7 @@ public class AllocationController {
         this.allocationList = allocationList;
     }
 
-    public String getAllocationID(Long ID) {
-        allocation = allocationEJB.DeleteAllocationWithID(ID, allocation);
-        return "listAllocation.xhtml";
-    }
-    public int getListSize(){
+    public int getListSize() {
         return allocationList.size();
     }
 }

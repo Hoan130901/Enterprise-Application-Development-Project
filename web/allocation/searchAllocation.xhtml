@@ -9,14 +9,16 @@
         <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Search an Allocation</h1>
         <hr/>
-        <h:form>
+        <h:form id="searchForm">
+            <h:inputHidden id="failMessage"/>
+            <h:message style="color:red ; font-size: 17px " for="failMessage"></h:message>
             <table>
                 <tr>
                     <td><h:outputLabel for="aID" value ="Allocation ID : "/></td>
-                    <td><h:inputText id="propID" value="" required ="true" requiredMessage="Allocaion ID cannot be blank"/></td>
+                    <td><h:inputText id="propID" value="#{allocationController.allocation.id}" required ="true" requiredMessage="Allocaion ID cannot be blank"/></td>
                 </tr>
             </table>
-            <h:commandButton id="searchAllocation" value="SEARCH" 
+            <h:commandButton id="searchAllocation" value="SEARCH" action="#{allocationController.getAllocationById}" 
                             />
             <hr/>
             <hr/>

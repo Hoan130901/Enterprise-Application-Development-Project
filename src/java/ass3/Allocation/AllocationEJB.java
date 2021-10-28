@@ -32,15 +32,16 @@ public class AllocationEJB {
     private EntityManager em;
 
     //Public methods           
-    public List<Allocation> findAllocation() {
+    public List<Allocation> findAllocation() {//method to get all allocation
         TypedQuery<Allocation> query = em.createNamedQuery("getAllocationQuery",Allocation.class);
         return query.getResultList();
     }
 
-    public Allocation createAllocation(Allocation allocation) {
+    public Allocation createAllocation(Allocation allocation) {//method to persist allocation
         em.persist(allocation);
         return allocation;
     }
+    //method to allocate a rentail prop to a manager
     public Allocation addRentalProp(String managerName,String rentalStreetName, Allocation allocation) {
         Query query1 = em.createNamedQuery("getManagerFullName",PManager.class);
         query1.setParameter("mFullName", managerName);
@@ -72,6 +73,7 @@ public class AllocationEJB {
         em.persist(allocation);
         return allocation;
     }
+    //method to allocate a in rental prop to a manager
         public Allocation addInRentProp(String managerName,String InRentStreetName, Allocation allocation) {
         Query query1 = em.createNamedQuery("getManagerFullName",PManager.class);
         query1.setParameter("mFullName", managerName);
@@ -101,6 +103,7 @@ public class AllocationEJB {
         em.persist(allocation);
         return allocation;
     }
+        //method to allocate a for sale prop to a manager
         public Allocation addSaleProp(String managerName,String SaleStreetName, Allocation allocation) {
         Query query1 = em.createNamedQuery("getManagerFullName",PManager.class);
         query1.setParameter("mFullName", managerName);
@@ -127,6 +130,7 @@ public class AllocationEJB {
         em.persist(allocation);
         return allocation;
     }
+        //method to delete an allocation
         public Allocation DeleteAllocationWithID(Long ID, Allocation allocation) {
             
           Query query1 = em.createNamedQuery("selectAllocationByID", Allocation.class);
@@ -144,5 +148,12 @@ public class AllocationEJB {
         query.setParameter("dpId", ID).executeUpdate();
         return allocation;
     }
+        //method to search allocation
+        public Allocation findAllocationById(Long ID, Allocation allocation) {
+            Query query1 = em.createNamedQuery("selectAllocationByID", Allocation.class);
+            query1.setParameter("SpId", ID);
+            allocation = (Allocation)query1.getSingleResult();
+            return allocation;
+        }
     
 }

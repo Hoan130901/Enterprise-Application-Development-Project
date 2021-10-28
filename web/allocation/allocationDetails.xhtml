@@ -7,37 +7,37 @@
         <title>Allocation Details</title>
     </h:head>
     <h:body>
-        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Allocation of ID: <h:outputText value=""/></h1>
+        <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Found Allocation  <h:outputText value=""/></h1>
         <h:dataTable value="" var="bk" border="1">
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Allocation ID"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{allocationController.allocation.id}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Property Manager"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{allocationController.allocation.manager.firstName} + #{allocationController.allocation.manager.lastName}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Property Location"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{allocationController.allocation.properties.streetNum} + #{allocationController.allocation.properties.streetName}" />
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Time Created"/>
                 </f:facet>
-                <h:outputText value=""/>
+                <h:outputText value="#{allocationController.allocation.creationDate}"/>
             </h:column>
             <h:column>
                 <f:facet name="header">
                     <h:outputText value="Action"/>
                 </f:facet>
-                <h:commandButton value ="Delete" action=""></h:commandButton>
+                <h:commandButton value ="Delete" action="#{allocationController.DeleteAllocationByID(allocationController.allocation.id)}"></h:commandButton>
             </h:column>
         </h:dataTable>
         <hr/>
