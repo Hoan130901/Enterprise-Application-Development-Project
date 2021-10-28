@@ -9,7 +9,7 @@
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">The Property Manager of ID: <h:outputText value="#{managerPropertyController.PManager.mid}"/></h1>
         <hr/>
-        <h:form id="salePropDetails">
+        <h:form id="detailForm">
             <table>
                 <tr>
                     <td><h:outputLabel value ="Manager Name: "/></td>
@@ -25,6 +25,8 @@
                 </tr>
             </table>
             <h1>Property Allocations:</h1>
+            <h:inputHidden id="emptyListMessage" />
+            <h:message style="color:darkblue; font-size: 17px " for="emptyListMessage" />
             <h:dataTable value="#{managerPropertyController.PManager.allocation}" var ="a" border ="1">
                 <h:column>
                     <f:facet name="header">

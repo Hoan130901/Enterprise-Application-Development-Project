@@ -71,6 +71,11 @@ public class ManagerPropertyController {
     //view details function
     public String getManagerName(Long mId) {
         pmanager = managerEJB.findManagerWithName(mId, pmanager);
+        if(pmanager.getAllocation().isEmpty()){
+            FacesMessage message = new FacesMessage("There is no Allocation for this Manager");
+            FacesContext.getCurrentInstance().addMessage("detailForm:emptyListMessage", message);
+            return "managerDetails.xhtml";
+        }
         return "managerDetails.xhtml";
     }
     
@@ -78,6 +83,11 @@ public class ManagerPropertyController {
     public String doSearchManager() {
         try {
             pmanager = managerEJB.searchPManager(pmanager.getFirstName(),pmanager.getLastName());
+            if(pmanager.getAllocation().isEmpty()){
+            FacesMessage message = new FacesMessage("There is no Allocation for this Manager");
+            FacesContext.getCurrentInstance().addMessage("detailForm:emptyListMessage", message);
+            return "managerDetails.xhtml";
+            }
         } catch (EJBException ee) { //cacth exception when id does not match in the database
             FacesMessage message = new FacesMessage("Property Manager not found! Please try again.");
             FacesContext.getCurrentInstance().addMessage("searchForm:failMessage", message);

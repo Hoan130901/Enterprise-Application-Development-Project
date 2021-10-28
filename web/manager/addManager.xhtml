@@ -15,23 +15,26 @@
                 <tr>
                     <td><h:outputLabel for="fName" value ="First Name : "/></td>
                     <td><h:inputText id="fName" value="#{managerPropertyController.PManager.firstName}" required ="true" requiredMessage="Manager's First Name cannot be blank"/></td>
+                    <td><h:message for="fName" id="msgforFName" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="lName" value ="Last Name : "/></td>
                     <td><h:inputText id="lName" value="#{managerPropertyController.PManager.lastName}" required ="true" requiredMessage="Manager's Last Name cannot be blank"/></td>
+                    <td><h:message for="lName" id="msgforLName" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="phone" value ="Phone(Mobile) : "/></td>
                     <td><h:inputText id="phone" value="#{managerPropertyController.PManager.phone}" required ="true" requiredMessage="Manager's phone number cannot be blank" /></td>
+                    <td><h:message for="phone" id="msgforPhone" style="color: red"/></td>
                 </tr>
                 <tr>
                     <td><h:outputLabel for="email" value ="Email : "/></td>
                     <td><h:inputText id="email" value="#{managerPropertyController.PManager.email}" required ="true" requiredMessage="Manager's email cannot be blank" /> </td>
+                    <td><h:message for="email" id="msgforMail" style="color: red"/></td>
                 </tr>
             </table>
             <h:commandButton id="createManager" value="Create" action="#{managerPropertyController.doCreatePManager}"
                             />
-            <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
             <hr/>
             </h:form>
         <h:form>
