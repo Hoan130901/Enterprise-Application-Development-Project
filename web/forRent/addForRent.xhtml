@@ -8,6 +8,7 @@
     </h:head>
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for a Rent Property</h1>
+        <hr/>
         <h:form id="addForRentForm"> <!-- create a form for user to enter information for a For Rent Property -->
             <h:inputHidden id="errorMessage"/>
             <h:message style="color:red ; font-size: 17px" for="errorMessage"/>
@@ -89,7 +90,6 @@
             </table>
             <h:commandButton id="createForRent" value="Create"  action="#{forRentController.doCreateRent}"
                              />
-            <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
         </h:form>
         <h:form>
             <hr/>

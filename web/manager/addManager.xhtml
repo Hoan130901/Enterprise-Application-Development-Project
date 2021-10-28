@@ -8,7 +8,9 @@
     </h:head>
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for a Property Manager</h1>
-        <h:form id="addSaleForm"> <!-- create a form for user to enter information for a For Rent Property -->
+        <h:form id="addManagerForm"> <!-- create a form for user to enter information for a For Rent Property -->
+            <h:inputHidden id="errorMessage"/>
+            <h:message style="color:red ; font-size: 17px" for="errorMessage"/>
             <table>
                 <tr>
                     <td><h:outputLabel for="fName" value ="First Name : "/></td>

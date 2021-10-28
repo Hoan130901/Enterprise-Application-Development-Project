@@ -44,18 +44,28 @@ public class ManagerPropertyController {
         FacesContext.getCurrentInstance().addMessage("managerForm:successMessage", message);
         }
         catch (EJBException e) {//display fail message if catch exception
-            FacesMessage message = new FacesMessage("Add Property Manager Fail! Please try Again " + e.getMessage());
-            FacesContext.getCurrentInstance().addMessage("managerForm:failMessage", message);
+        FacesMessage message = new FacesMessage("Add Property Manager Fail! Please try Again " + e.getMessage());
+        FacesContext.getCurrentInstance().addMessage("managerForm:failMessage", message);
         }
         return "listManager.xhtml";
     }
     public String doListPManager() {//method to list all manager
         pmanagerList = managerEJB.findPManagerProp();
+        if (pmanagerList.isEmpty()) {//check if list is empty 
+            FacesMessage message = new FacesMessage("There is no property manager in the system");
+            FacesContext.getCurrentInstance().addMessage("managerForm:emptyListMessage", message);
+            return "listManager.xhtml";
+        }
         return "listManager.xhtml";
     }
     
     public String doListPManagerIndex() {//method to list all manager from index
         pmanagerList = managerEJB.findPManagerProp();
+        if (pmanagerList.isEmpty()) {//check if list is empty 
+            FacesMessage message = new FacesMessage("There is no property manager in the system");
+            FacesContext.getCurrentInstance().addMessage("managerForm:emptyListMessage", message);
+            return "manager/listManager.xhtml";
+        }
         return "manager/listManager.xhtml";
     }
     //view details function
@@ -64,7 +74,7 @@ public class ManagerPropertyController {
         return "managerDetails.xhtml";
     }
     
-    //method to search for rent property
+    //method to search property manager
     public String doSearchManager() {
         try {
             pmanager = managerEJB.searchPManager(pmanager.getFirstName(),pmanager.getLastName());
