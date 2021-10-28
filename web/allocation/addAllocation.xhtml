@@ -9,52 +9,54 @@
     </h:head>
     <h:body>
         <h1 style="font-weight: bold; color: midnightblue;background-color: activecaption">Provide the following information for an Allocation</h1>
-            <h:form id="addSaleForm"> <!-- create a form for user to enter information for an Allocation -->
-                <table>
-                    <tr>
-                        <td><h:outputLabel for="propManager" value ="Property Manager : "/></td>
-                        <td><h:selectOneMenu value="#{allocationController.managerName}" >
-                             <c:forEach items="#{managerPropertyController.PManagerListD}" var="manager">
-                                 <f:selectItem itemValue="#{manager.firstName} #{manager.lastName}" itemLabel="#{manager.firstName} #{manager.lastName}" />
-                              </c:forEach>
-                            </h:selectOneMenu>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><h:outputLabel for="saleProp" value ="Sale Property : "/></td>
-                        <td><h:selectOneMenu value="#{allocationController.saleStreetName}">
-                                <c:forEach items="#{forSaleController.forSalePropList}" var="sale">
-                                    <f:selectItem itemValue="#{sale.streetNum} #{sale.streetName}" itemLabel="#{sale.streetNum} #{sale.streetName}" />
-                              </c:forEach>
-                            </h:selectOneMenu></td>
-                        <td><h:commandButton  id ="allocateSale" value="Allocate" action="#{allocationController.doCreateSale}" /></td>
-                    </tr>
-                     <tr>
-                   <td><h:outputLabel for="forRent" value ="For Rent Property : "/></td>
-                   <td><h:selectOneMenu value="#{allocationController.rentalStreetName}">
-                           <c:forEach items="#{forRentController.forRentPropList}" var="rent">
-                                <f:selectItem itemValue="#{rent.streetNum} #{rent.streetName}" itemLabel="#{rent.streetNum} #{rent.streetName}" />
-                              </c:forEach>
-                        </h:selectOneMenu></td>
-                   <td><h:commandButton id ="allocateForRent" value="Allocate" action="#{allocationController.doCreateRental}"/></td>
+        <h:form id="addAllocationForm"> <!-- create a form for user to enter information for an Allocation -->
+            <h:inputHidden id ="successMessage"/>
+            <h:message for="successMessage" style="color:darkblue; font-size: 17px" />
+            <h:inputHidden id="errorMessage"/>
+            <h:message style="color:red ; font-size: 17px" for="errorMessage"/>
+            <table>
+                <tr>
+                    <td><h:outputLabel for="propManager" value ="Property Manager : "/></td>
+                    <td><h:selectOneMenu value="#{allocationController.managerName}" >
+                            <c:forEach items="#{managerPropertyController.PManagerListD}" var="manager">
+                                <f:selectItem itemValue="#{manager.firstName} #{manager.lastName}" itemLabel="#{manager.firstName} #{manager.lastName}" />
+                            </c:forEach>
+                        </h:selectOneMenu>
+                    </td>
                 </tr>
-                    <tr>
-                        <td><h:outputLabel for="inRent" value ="In Rent Property : "/></td>
-                        <td><h:selectOneMenu value="#{allocationController.inRentStreetName}">
-                             <c:forEach items="#{inRentController.inRentPropList}" var="innrent">
+                <tr>
+                    <td><h:outputLabel for="saleProp" value ="Sale Property : "/></td>
+                    <td><h:selectOneMenu value="#{allocationController.saleStreetName}">
+                            <c:forEach items="#{forSaleController.forSalePropList}" var="sale">
+                                <f:selectItem itemValue="#{sale.streetNum} #{sale.streetName}" itemLabel="#{sale.streetNum} #{sale.streetName}" />
+                            </c:forEach>
+                        </h:selectOneMenu></td>
+                    <td><h:commandButton  id ="allocateSale" value="Allocate" action="#{allocationController.doCreateSale}" /></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="forRent" value ="For Rent Property : "/></td>
+                    <td><h:selectOneMenu value="#{allocationController.rentalStreetName}">
+                            <c:forEach items="#{forRentController.forRentPropList}" var="rent">
+                                <f:selectItem itemValue="#{rent.streetNum} #{rent.streetName}" itemLabel="#{rent.streetNum} #{rent.streetName}" />
+                            </c:forEach>
+                        </h:selectOneMenu></td>
+                    <td><h:commandButton id ="allocateForRent" value="Allocate" action="#{allocationController.doCreateRental}"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="inRent" value ="In Rent Property : "/></td>
+                    <td><h:selectOneMenu value="#{allocationController.inRentStreetName}">
+                            <c:forEach items="#{inRentController.inRentPropList}" var="innrent">
                                 <f:selectItem itemValue="#{innrent.streetNum} #{innrent.streetName}" itemLabel="#{innrent.streetNum} #{innrent.streetName}" />
-                              </c:forEach>
-                            </h:selectOneMenu></td>
-                        <td><h:commandButton id ="allocateInRent" value="Allocate" action="#{allocationController.doCreateInRent}" /></td>
-                    </tr>
-
-                </table>
-                <h:messages for ="errorMessage" globalOnly="true" /> <!-- Global messages, error message from java classes -->
-                <hr/>
-                <h:link outcome="listAllocation" style ="margin-left: 30px">List of Allocation</h:link><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
-            </h:form>
-
-
+                            </c:forEach>
+                        </h:selectOneMenu></td>
+                    <td><h:commandButton id ="allocateInRent" value="Allocate" action="#{allocationController.doCreateInRent}" /></td>
+                </tr>
+            </table>
+            <hr/>
+        </h:form>
+        <h:form>
+            <h:commandLink action="#{allocationController.doListAllocation()}" value="List all Allocation" style ="margin-left: 30px"/><span> | </span><h:link outcome="/index.xhtml">Main Page</h:link>
+        </h:form>
     </h:body>
 </html>
 

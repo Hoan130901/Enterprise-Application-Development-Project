@@ -9,8 +9,11 @@ import ass3.web.Allocation;
 import java.util.*;
 import javax.inject.Named;
 import javax.ejb.EJB;
+import javax.ejb.EJBException;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -32,27 +35,65 @@ public class AllocationController {
     private List<Allocation> allocationList = new ArrayList<>();
 
     // Public Methods           
-    public String doCreateAllocation() {
-        allocation = allocationEJB.createAllocation(allocation);
+    public String doListAllocationIndex() {//list all allocation from index
         allocationList = allocationEJB.findAllocation();
-        return "listAllocation.xhtml";
-    }
-
-    public String doListAllocationIndex() {
-        allocationList = allocationEJB.findAllocation();
+        if (allocationList.isEmpty()) {//check if list empty, then display message 
+            FacesMessage message = new FacesMessage("No allocation has been set in the system");
+            FacesContext.getCurrentInstance().addMessage("allocationForm:emptyListMessage", message);
+            return "allocation/listAllocation.xhtml";
+        }
         return "allocation/listAllocation.xhtml";
     }
 
-    public void doCreateRental() {
-        allocationEJB.addRentalProp(managerName, rentalStreetName, allocation);
+    public String doListAllocation() {//list all allocation
+        allocationList = allocationEJB.findAllocation();
+         if (allocationList.isEmpty()) {//check if list empty, then display message 
+            FacesMessage message = new FacesMessage("No allocation has been set in the system");
+            FacesContext.getCurrentInstance().addMessage("allocationForm:emptyListMessage", message);
+            return "listAllocation.xhtml";
+        }
+        return "listAllocation.xhtml";
     }
 
-    public void doCreateSale() {
-        allocationEJB.addSaleProp(managerName, saleStreetName, allocation);
+    public void doCreateRental() {//allocate for rent property to selected manager   
+        try {
+            allocationEJB.addRentalProp(managerName, rentalStreetName, allocation);
+            //display succesful added message
+            FacesMessage message = new FacesMessage("Alllocation for " + allocation.getManager().getFirstName() + " has been created with property " + allocation.getProperties().getLocation());
+            FacesContext.getCurrentInstance().addMessage("addAllocationForm:successMessage", message);
+        } catch (EJBException e) {
+            //display fail message if exception occur 
+            FacesMessage message = new FacesMessage("Add Allocation Fail! Please try Again ");
+            FacesContext.getCurrentInstance().addMessage("addAllocationForm:errorMessage", message);
+        }
     }
 
-    public void doCreateInRent() {
-        allocationEJB.addInRentProp(managerName, inRentStreetName, allocation);
+    public void doCreateSale() {//allocate for sale property to selected manager   
+        
+        try {
+            allocationEJB.addSaleProp(managerName, saleStreetName, allocation);
+            //display succesful added message
+            FacesMessage message = new FacesMessage("Alllocation for " + allocation.getManager().getFirstName() + " has been created with property " + allocation.getProperties().getLocation());
+            FacesContext.getCurrentInstance().addMessage("addAllocationForm:successMessage", message);
+        } catch (EJBException e) {
+            //display fail message if exception occur 
+            FacesMessage message = new FacesMessage("Add Allocation Fail! Please try Again ");
+            FacesContext.getCurrentInstance().addMessage("addAllocationForm:errorMessage", message);
+        }
+    }
+
+    public void doCreateInRent() {//allocate in rent property to selected manager       
+        try {
+            allocationEJB.addInRentProp(managerName, inRentStreetName, allocation);
+            //display succesful added message
+            FacesMessage message = new FacesMessage("Alllocation for " + allocation.getManager().getFirstName() + " has been created with property " + allocation.getProperties().getLocation());
+            FacesContext.getCurrentInstance().addMessage("addAllocationForm:successMessage", message);
+        } catch (EJBException e) {
+            //display fail message if exception occur 
+            FacesMessage message = new FacesMessage("Add Allocation Fail! Please try Again ");
+            FacesContext.getCurrentInstance().addMessage("addAllocationForm:errorMessage", message);
+        }
+        
     }
 
     //Getters & Setters         
@@ -104,8 +145,12 @@ public class AllocationController {
     public void setAllocationList(List<Allocation> allocationList) {
         this.allocationList = allocationList;
     }
-        public String getAllocationID(Long ID) {
+
+    public String getAllocationID(Long ID) {
         allocation = allocationEJB.DeleteAllocationWithID(ID, allocation);
         return "listAllocation.xhtml";
+    }
+    public int getListSize(){
+        return allocationList.size();
     }
 }
