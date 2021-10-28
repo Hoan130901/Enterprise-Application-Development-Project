@@ -42,6 +42,10 @@ public class AllocationController {
         allocationList = allocationEJB.findAllocation();
         return "allocation/listAllocation.xhtml";
     }
+    public String getAllocationById() {
+        allocation = allocationEJB.findAllocationById(allocation.getId(), allocation);
+        return "allocationDetails.xhtml";
+    }
 
     public void doCreateRental() {
         allocationEJB.addRentalProp(managerName, rentalStreetName, allocation);
@@ -104,8 +108,9 @@ public class AllocationController {
     public void setAllocationList(List<Allocation> allocationList) {
         this.allocationList = allocationList;
     }
-        public String getAllocationID(Long ID) {
+        public String DeleteAllocationByID(Long ID) {
         allocation = allocationEJB.DeleteAllocationWithID(ID, allocation);
         return "listAllocation.xhtml";
     }
 }
+

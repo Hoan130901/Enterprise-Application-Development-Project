@@ -144,5 +144,11 @@ public class AllocationEJB {
         query.setParameter("dpId", ID).executeUpdate();
         return allocation;
     }
+        public Allocation findAllocationById(Long ID, Allocation allocation) {
+            Query query1 = em.createNamedQuery("selectAllocationByID", Allocation.class);
+            query1.setParameter("SpId", ID);
+            allocation = (Allocation)query1.getSingleResult();
+            return allocation;
+        }
     
 }

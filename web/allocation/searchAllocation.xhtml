@@ -13,10 +13,10 @@
             <table>
                 <tr>
                     <td><h:outputLabel for="aID" value ="Allocation ID : "/></td>
-                    <td><h:inputText id="propID" value="" required ="true" requiredMessage="Allocaion ID cannot be blank"/></td>
+                    <td><h:inputText id="propID" value="#{allocationController.allocation.id}" required ="true" requiredMessage="Allocaion ID cannot be blank"/></td>
                 </tr>
             </table>
-            <h:commandButton id="searchAllocation" value="SEARCH" 
+            <h:commandButton id="searchAllocation" value="SEARCH" action="#{allocationController.getAllocationById}" 
                             />
             <hr/>
             <hr/>
